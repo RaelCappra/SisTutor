@@ -3,14 +3,14 @@ include('../lib/Conexao.php');
 
 
 class TarefaDao {
-	private static $tabelaCurso = "tarefa";
+	private static $tabela = "tarefa";
 	
 	function listaTarefas() {
 		$conexao = new Conexao();
 		
 		$dbCon = $conexao->getConexao();
 		
-		$sql = "select * from ".self::$tabelaCurso. " where lixeira=false";
+		$sql = "select * from ".self::$tabela. " where lixeira=false";
 		
 		$result = pg_query($dbCon, $sql);
 		
@@ -29,7 +29,7 @@ class TarefaDao {
 		
 		$dbCon = $conexao->getConexao();
 		
-		$sql = "select * from ".self::$tabelaCurso. " where lixeira=true";
+		$sql = "select * from ".self::$tabela. " where lixeira=true";
 		
 		$result = pg_query($dbCon, $sql);
 		
@@ -48,7 +48,7 @@ class TarefaDao {
 		
 		$dbCon = $conexao->getConexao();
 		
-		$sql = "select * from ".self::$tabelaCurso." where lixeira=false order by data_hora asc";
+		$sql = "select * from ".self::$tabela." where lixeira=false order by data_hora asc";
                
 		
 		$result = pg_query($dbCon, $sql);
@@ -68,7 +68,7 @@ class TarefaDao {
 		
 		$dbCon = $conexao->getConexao();
 		
-		$sql = "select * from ".self::$tabelaCurso." where lixeira=false order by data_criacao asc";
+		$sql = "select * from ".self::$tabela." where lixeira=false order by data_criacao asc";
                
 		
 		$result = pg_query($dbCon, $sql);
@@ -88,7 +88,7 @@ class TarefaDao {
 		
 		$dbCon = $conexao->getConexao();
 		
-		$sql = "select * from ".self::$tabelaCurso." where id = ".$id;
+		$sql = "select * from ".self::$tabela." where id = ".$id;
 		
 		$result = pg_query($dbCon, $sql);
 		
@@ -107,7 +107,7 @@ class TarefaDao {
 		
 		$dbCon = $conexao->getConexao();
 		
-		$sql = "delete from ".self::$tabelaCurso." where lixeira = true";
+		$sql = "delete from ".self::$tabela." where lixeira = true";
 		
 		pg_query($dbCon, $sql);
 
