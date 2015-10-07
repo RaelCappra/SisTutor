@@ -11,6 +11,19 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>TODO write content</div>
+        <form enctype="multipart/form-data" action="../controller/FrontController.php" method="post">
+            <input type="hidden" name="controller" value="PoloController">
+                <table class="table">
+                    <!-- BEGIN BLOCK_POLO -->
+                    <tr>
+                        <td>{POLO_NOME}</td>
+                        <td><button name="action" value="editar({ID_POLO})">Editar</button></td>
+                        <td><button name="action" value="deletar({ID_POLO})">Deletar</button></td>
+                        <td><button name="action" value="visualizar({ID_POLO})">Visualizar</button></td>
+                    </tr>  
+                    <!-- END BLOCK_TAREFA -->
+                </table>
+    
+        </form>
     </body>
 </html>
