@@ -64,23 +64,16 @@ class PoloDao {
         return $polo;
     }
 
-    function create($tutor) {
+    function create($polo) {
         $conexao = new Conexao();
 
         $dbCon = $conexao->getConexao();
         //pessoas -> tutor
-        $sql = "insert into pessoas values()";
-        $params = array($tutor->getCpf(), $tutor->getNome(),);
+        $sql = "insert into polo (nome, cidade, uf) values($1, $2, $3)";
+        $params = array($polo->getNome(), $polo->getCidade(), $polo->getEstado());
         $result = pg_query_params($dbCon, $sql, $params);
 
-        $tarefas = Array();
-        while ($linha = pg_fetch_assoc($result)) {
-            array_push($tarefas, $linha);
-        }
-
         $conexao->closeConexao();
-
-        return $tarefas;
     }
 
     function delete($codigo) {
