@@ -13,15 +13,6 @@
  */
 class Tutor extends Pessoa{
     private $formacao, $titulacao;
-    private $cursos;
-            
-    function getCursos() {
-        return $this->cursos;
-    }
-
-    function setCursos($cursos) {
-        $this->cursos = $cursos;
-    }
 
         
     function getFormacao() {

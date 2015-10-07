@@ -13,7 +13,7 @@
  */
 class Disciplina {
     private $id, $nome;
-    private /* @var $curso Curso */ $curso;
+    private $curso;
     
     function getCurso() {
         return $this->curso;

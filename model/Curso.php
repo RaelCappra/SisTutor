@@ -13,7 +13,7 @@
  */
 class Curso {
     private $id, $nome, $tipo;
-    private /* @var $polo Polo */ $polo;
+    private $polo;
     
     function getPolo() {
         return $this->polo;
