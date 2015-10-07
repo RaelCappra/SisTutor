@@ -71,48 +71,34 @@ class PoloDao {
         //pessoas -> tutor
         $sql = "insert into polo (nome, cidade, uf) values($1, $2, $3)";
         $params = array($polo->getNome(), $polo->getCidade(), $polo->getEstado());
-        $result = pg_query_params($dbCon, $sql, $params);
+        pg_query_params($dbCon, $sql, $params);
 
         $conexao->closeConexao();
     }
 
-    function delete($codigo) {
+    function delete($id) {
         //delete on cascade?
         $conexao = new Conexao();
 
         $dbCon = $conexao->getConexao();
 
-        $sql = "select * from " . self::$tabela . " where lixeira=false";
+        $sql = "delete from " . self::$tabela . " where polo_id=$1";
 
-        $result = pg_query($dbCon, $sql);
-
-        $tarefas = Array();
-        while ($linha = pg_fetch_assoc($result)) {
-            array_push($tarefas, $linha);
-        }
-
+        pg_query_params($dbCon, $sql, Array($id));
         $conexao->closeConexao();
-
-        return $tarefas;
     }
 
-    function update($tutor) {
+    function update($polo) {
         $conexao = new Conexao();
 
         $dbCon = $conexao->getConexao();
 
-        $sql = "select * from " . self::$tabela . " where lixeira=false";
-
-        $result = pg_query($dbCon, $sql);
-
-        $tarefas = Array();
-        while ($linha = pg_fetch_assoc($result)) {
-            array_push($tarefas, $linha);
-        }
+        $sql = "update " . self::$tabela . " set nome=$1, cidade=$2, uf=$3 where id_polo=$4";
+        
+        $params = Array($polo->getNome(), $polo->getCidade(), $polo->getEstado(), $polo->getId(),);
+        pg_query_params($dbCon, $sql, $params);
 
         $conexao->closeConexao();
-
-        return $tarefas;
     }
 
 }
