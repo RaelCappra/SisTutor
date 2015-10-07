@@ -10,12 +10,12 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
 
 	require_once "../controller/".$_POST['controller'].".php";
 
-	eval ('$objeto = new '.$_POST['controller'].'(); $objeto->'.$_POST['action'].'();');
+	eval ('$objeto = new '.$_POST['controller'].'(); $objeto->'.$_POST['action'].';');
 
 } else {
 
 	require_once "../controller/".$_GET['controller'].".php";
 
-	eval ('$objeto = new '.$_GET['controller'].'(); $objeto->'.$_POST['action'].'();');
+	eval ('$objeto = new '.$_GET['controller'].'(); $objeto->'.$_GET['action'].';');
 
 }
