@@ -11,6 +11,21 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>TODO write content</div>
+        <form action="../controller/FrontController.php" method="post">
+            Nome:<input type="text"  name="nome"><br>
+            Tipo:<select name="tipo">
+                    <!-- BEGIN BLOCK_TIPO -->
+                    <option value="{NOME_TIPO}">{NOME_TIPO}</option>
+                    <!-- END BLOCK_TIPO -->
+                 </select>
+            Polo:<select name="polo">
+                    <!-- BEGIN BLOCK_POLO -->
+                    <option value="{NOME_POLO}">{NOME_POLO}</option>
+                    <!-- END BLOCK_POLO -->
+                 </select>
+            <input type="hidden" name="controller" value="CursoController">
+            <input type="hidden" name="action" value="adicionar()">
+            <input type="submit" value="Add">
+        </form>
     </body>
 </html>

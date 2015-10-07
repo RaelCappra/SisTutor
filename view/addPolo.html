@@ -11,6 +11,13 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>TODO write content</div>
+        <form action="../controller/FrontController.php" method="post">
+            Nome:<input type="text"  name="nome"><br>
+            Cidade:<input type="text"  name="cidade"><br>
+            Estado:<input type="text"  name="estado"><br>
+            <input type="hidden" name="controller" value="PoloController">
+            <input type="hidden" name="action" value="adicionar()">
+            <input type="submit" value="Add">
+        </form>
     </body>
 </html>
