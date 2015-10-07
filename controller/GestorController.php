@@ -14,15 +14,15 @@ include_once("../database/GestorDao.php");
  */
 class GestorController {
     public function login(){
-        $login = _POST['login'];
-        $senha = _POST['senha'];
+        $login = $_POST['login'];
+        $senha = $_POST['senha'];
         
         $autenticou = (new GestorDao())->autentica($login, $senha);
         
         
         //TODO: SESSIONS
         if($autenticou){
-            
+            header("location: ../view/main.html");
         }
         else{
             header("location: ../view");
