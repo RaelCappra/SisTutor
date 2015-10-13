@@ -13,17 +13,19 @@ and open the template in the editor.
     <body>
         <form action="../controller/FrontController.php" method="post">
             Nome:<input type="text"  name="nome"><br>
-            Tipo:<select name="tipo">
-                    <!-- BEGIN BLOCK_TIPO -->
-                    <option value="{NOME_TIPO}">{NOME_TIPO}</option>
-                    <!-- END BLOCK_TIPO -->
+            Email:<input type="text"  name="email"><br>
+            CPF:<input type="text"  name="cpf"><br>
+            Formacao:<select name="formacao">
+                    <!-- BEGIN BLOCK_FORMACAO -->
+                    <option value="{ID_FORMACAO}">{NOME_FORMACAO}</option>
+                    <!-- END BLOCK_FORMACAO -->
                  </select>
-            Polo:<select name="polo">
-                    <!-- BEGIN BLOCK_POLO -->
-                    <option value="{NOME_POLO}">{NOME_POLO}</option>
-                    <!-- END BLOCK_POLO -->
+            Titulacao:<select name="titulacao">
+                    <!-- BEGIN BLOCK_TITULACAO -->
+                    <option value="{ID_TITULACAO}">{NOME_TITULACAO}</option>
+                    <!-- END BLOCK_TITULACAO -->
                  </select>
-            <input type="hidden" name="controller" value="DisciplinaController">
+            <input type="hidden" name="controller" value="TutorController">
             <input type="hidden" name="action" value="adicionar()">
             <input type="submit" value="Add">
         </form>

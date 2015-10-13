@@ -11,6 +11,19 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>TODO write content</div>
+        Nome:<input type="text"  name="nome" value="{NOME_CURSO}"><br>
+        Tipo:<select name="tipo">
+                <!-- BEGIN BLOCK_TIPO -->
+                <option value="{ID_TIPO}" {SELECTED}>{NOME_TIPO}</option>
+                <!-- END BLOCK_TIPO -->
+             </select>
+        Polo:<select name="polo">
+                <!-- BEGIN BLOCK_POLO -->
+                <option value="{ID_POLO}" {SELECTED}>{NOME_POLO}</option>
+                <!-- END BLOCK_POLO -->
+             </select>
+        <input type="hidden" name="controller" value="CursoController">
+        <input type="hidden" name="action" value="editar()">
+        <input type="submit" value="Add">
     </body>
 </html>
