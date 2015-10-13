@@ -11,6 +11,7 @@
  *
  * @author aluno
  */
+include_once '../database/TutorDao.php';
 class Tutor extends Pessoa{
     private $formacao, $titulacao;
 
@@ -30,6 +31,30 @@ class Tutor extends Pessoa{
     function setTitulacao($titulacao) {
         $this->titulacao = $titulacao;
     }
-
+    
+    function delete() {
+         $tutorDao = new TutorDao();
+         $tutorDao->delete($this->id);
+     }
+     
+     function read() {
+         $tutorDao = new TutorDao();
+         return $tutorDao->read();
+     }
+     
+     function getById() {
+         $tutorDao = new TutorDao();
+         return $tutorDao->getById($this->id);
+     }
+     
+     function create() {
+         $tutorDao = new TutorDao();
+         $tutorDao->create($this);
+     }
+     
+     function update() {
+         $tutorDao = new TutorDao();
+         $tutorDao->update($this);
+     }
 
 }

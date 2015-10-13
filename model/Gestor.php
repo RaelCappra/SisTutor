@@ -11,6 +11,7 @@
  *
  * @author aluno
  */
+include_once '../database/GestorDao.php';
 class Gestor extends Pessoa{
     private $login, $senha;
     function getLogin() {
@@ -29,7 +30,8 @@ class Gestor extends Pessoa{
         $this->senha = $senha;
     }
 
-    function login(){
-        
+    function autentica(){
+        $gestorDao = new GestorDao();
+        return $gestorDao->autentica($this->login, $this->senha);
     }
 }

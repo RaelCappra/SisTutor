@@ -11,6 +11,7 @@
  *
  * @author aluno
  */
+include_once '../database/CursoDao.php';
 class Polo {
     private $id, $nome, $cidade, $estado;
     
@@ -45,6 +46,30 @@ class Polo {
     function setEstado($estado) {
         $this->estado = $estado;
     }
-
+    
+    function delete() {
+         $cursoDao = new CursoDao();
+         $cursoDao->delete($this->id);
+     }
+     
+     function read() {
+         $cursoDao = new CursoDao();
+         return $cursoDao->read();
+     }
+     
+     function getById() {
+         $cursoDao = new CursoDao();
+         return $cursoDao->getById($this->id);
+     }
+     
+     function create() {
+         $cursoDao = new CursoDao();
+         $cursoDao->create($this);
+     }
+     
+     function update() {
+         $cursoDao = new CursoDao();
+         $cursoDao->update($this);
+     }
 
 }

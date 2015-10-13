@@ -46,7 +46,6 @@ class TutorDao {
     }
     
     function delete($codigo) {
-                //delete on cascade?
 		$conexao = new Conexao();
 		
 		$dbCon = $conexao->getConexao();

@@ -1,16 +1,6 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of Curso
- *
- * @author aluno
- */
+include_once '../database/CursoDao.php';
 class Curso {
     private $id, $nome, $tipo;
     private $polo;
@@ -46,6 +36,32 @@ class Curso {
      function setTipo($tipo) {
          $this->tipo = $tipo;
      }
+     
+     function delete() {
+         $cursoDao = new CursoDao();
+         $cursoDao->delete($this->id);
+     }
+     
+     function read() {
+         $cursoDao = new CursoDao();
+         return $cursoDao->read();
+     }
+     
+     function getById() {
+         $cursoDao = new CursoDao();
+         return $cursoDao->getById($this->id);
+     }
+     
+     function create() {
+         $cursoDao = new CursoDao();
+         $cursoDao->create($this);
+     }
+     
+     function update() {
+         $cursoDao = new CursoDao();
+         $cursoDao->update($this);
+     }
+     
 
 
 }

@@ -6,11 +6,7 @@
  * and open the template in the editor.
  */
 
-/**
- * Description of Disciplina
- *
- * @author aluno
- */
+include_once '../database/DisciplinaDao.php';
 class Disciplina {
     private $id, $nome;
     private $curso;
@@ -40,5 +36,29 @@ class Disciplina {
         $this->nome = $nome;
     }
 
+    function delete() {
+         $disciplinaDao = new DisciplinaDao();
+         $disciplinaDao->delete($this->id);
+     }
+     
+     function read() {
+         $disciplinaDao = new DisciplinaDao();
+         return $disciplinaDao->read();
+     }
+     
+     function getById() {
+         $disciplinaDao = new DisciplinaDao();
+         return $disciplinaDao->getById($this->id);
+     }
+     
+     function create() {
+         $disciplinaDao = new DisciplinaDao();
+         $disciplinaDao->create($this);
+     }
+     
+     function update() {
+         $disciplinaDao = new DisciplinaDao();
+         $disciplinaDao->update($this);
+     }
 
 }
