@@ -13,19 +13,24 @@ include_once("../database/GestorDao.php");
  * @author aluno
  */
 class GestorController {
-    public function login(){
+
+    public function login() {
         $login = $_POST['login'];
         $senha = $_POST['senha'];
-        
+
         $autenticou = (new GestorDao())->autentica($login, $senha);
-        
-        
+
+
         //TODO: SESSIONS
-        if($autenticou){
+        if ($autenticou) {
+            session_start();
+            session_cache_expire(7);
+            $_SESSION['login'] = $login;
+
             header("location: ../view/main.html");
-        }
-        else{
+        } else {
             header("location: ../view");
         }
     }
+
 }
