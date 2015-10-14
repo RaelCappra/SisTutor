@@ -17,11 +17,14 @@ and open the template in the editor.
                     <!-- BEGIN BLOCK_TUTOR -->
                     <tr>
                         <td>{TUTOR_NOME}</td>
-                        <td><button name="action" value="editar({ID_TUTOR})">Editar</button></td>
+                        <td>{TUTOR_CPF}</td>
+                        <td>{TUTOR_EMAIL}</td>
+                        <td>{TUTOR_FORMACAO}</td>
+                        <td>{TUTOR_TITULACAO}</td>
+                        <td><a href="../web/editaTutor.php?id={ID_TUTOR}">Editar</a></td>
                         <td><button name="action" value="deletar({ID_TUTOR})">Deletar</button></td>
-                        <td><button name="action" value="visualizar({ID_TUTOR})">Visualizar</button></td>
                     </tr>  
-                    <!-- END BLOCK_TAREFA -->
+                    <!-- END BLOCK_TUTOR -->
                 </table>
     
         </form>

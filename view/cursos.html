@@ -1,9 +1,4 @@
-<?php
-if (!isset($_SESSION['my_login_var'])) {
-  header('HTTP/1.1 403 Forbidden');
-  exit();
-}
-?>
+
 <html>
     <head>
         <title>TODO supply a title</title>
@@ -17,6 +12,8 @@ if (!isset($_SESSION['my_login_var'])) {
                     <!-- BEGIN BLOCK_CURSO -->
                     <tr>
                         <td>{CURSO_NOME}</td>
+                        <td>{CURSO_TIPO}</td>
+                        <td>{CURSO_POLO}</td>
                         <td><a href="../web/editaCurso.php?id={ID_CURSO}">Editar</a></td>
                         <td><button name="action" value="deletar({ID_CURSO})">Deletar</button></td>
 
