@@ -40,22 +40,21 @@ foreach ($cursos as $t) {
 
 foreach ($tutors as $p) {
     $tutoresDisciplina = $disciplina->getTutores();
+
+    $repetido = false;
     foreach ($tutoresDisciplina as $tutor) {
-        if ($tutor->getTutorId() != $p->getTutorId()) {
-            $tpl->ID_TUTOR = $p->getTutorId();
-            $tpl->NOME_TUTOR = $p->getNome();
+
+        if ($tutor->getTutorId() == $p->getTutorId()) {
+            $repetido = true;
         }
     }
+    if (!$repetido) {
+        $tpl->ID_TUTOR = $p->getTutorId();
+        $tpl->NOME_TUTOR = $p->getNome();
+        $tpl->block("BLOCK_TUTOR");
+    }
 
-
-
-    //if ($p->getId() == $disciplina->getTutor()->getId()) {
-    //    $tpl->SELECTED = "selected";
-    //} else {
-    $tpl->clear("SELECTED");
-    //}
-
-    $tpl->block("BLOCK_TUTOR");
+    
 }
 
 
