@@ -17,21 +17,6 @@ class GestorController {
     public function login() {
         $login = $_POST['login'];
         $senha = $_POST['senha'];
-<<<<<<< HEAD
-
-        $autenticou = (new GestorDao())->autentica($login, $senha);
-
-
-        //TODO: SESSIONS
-        if ($autenticou) {
-            session_start();
-            session_cache_expire(7);
-            $_SESSION['login'] = $login;
-
-            header("location: ../view/main.html");
-        } else {
-            header("location: ../view/index.php");
-=======
         
         $gestor = new Gestor();
         $gestor->setLogin($login);
@@ -43,7 +28,6 @@ class GestorController {
             header("location: ../view/main.html");
         }else{
             header("location: ../view");
->>>>>>> 73bceeb3faa72f1b8fc2deb112f686c450407442
         }
     }
 
