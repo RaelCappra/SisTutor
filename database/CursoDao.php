@@ -53,9 +53,9 @@ class CursoDao {
         $tabela = self::$tabela;
         $sql = "select id_curso,nome, polo, id_tipo_curso, descricao from " . self::$tabela . 
                 " join $tipoCurso on id_tipo_curso = tipo" .
-                " where id_curso=".$id;
+                " where id_curso=$1";
 
-        $result = pg_query($dbCon, $sql);
+        $result = pg_query_params($dbCon, $sql, Array($id));
         $curso = 0;
         
         $linha = pg_fetch_assoc($result);
