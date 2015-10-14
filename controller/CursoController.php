@@ -24,8 +24,9 @@ class CursoController {
      function create() {
          $curso = new Curso();
          $curso->setNome($_POST['nome']);
-         $polo = (new Polo())->getById($_POST['polo']);
-         $curso->setPolo($polo);
+         $polo = new Polo();
+         $polo->setId($_POST['polo']);
+         $curso->setPolo($polo->getById());
          $tipo = array('id' => $_POST['tipo']);
          $curso->setTipo($tipo);
          $curso->create();

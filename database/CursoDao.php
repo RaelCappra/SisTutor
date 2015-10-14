@@ -16,7 +16,7 @@ class CursoDao {
         
         $dbCon = $conexao->getConexao();
         
-        $sql = "select nome, polo, nome, $tipoCurso.id_tipo_curso, descricao from " . self::$tabela . 
+        $sql = "select id_curso,nome, polo, nome, $tipoCurso.id_tipo_curso, descricao from " . self::$tabela . 
                 " join $tipoCurso on id_tipo_curso = tipo";
 
         $result = pg_query($dbCon, $sql);
@@ -51,9 +51,9 @@ class CursoDao {
         
         $dbCon = $conexao->getConexao();
         $tabela = self::$tabela;
-        $sql = "select nome, polo, id_tipo_curso, descricao from " . self::$tabela . 
+        $sql = "select id_curso,nome, polo, id_tipo_curso, descricao from " . self::$tabela . 
                 " join $tipoCurso on id_tipo_curso = tipo" .
-                " where id_curso=$1";
+                " where id_curso=".$id;
 
         $result = pg_query($dbCon, $sql);
         $curso = 0;
@@ -65,7 +65,7 @@ class CursoDao {
             $nome = $linha['nome'];
             $tipo = Array("descricao"=>$linha['descricao'], "id"=>$linha["id_tipo_curso"]);
             $idPolo = $linha['polo'];
-            $id = $linha['id'];
+            $id = $linha['id_curso'];
             
             $polo = (new PoloDao())->getById($idPolo);
             
@@ -85,7 +85,7 @@ class CursoDao {
         $conexao = new Conexao();
 
         $dbCon = $conexao->getConexao();
-        $sql = "insert into curso (nome, tipo, polo) values($1, $2, $3)";
+        $sql = "insert into sistutor.curso (nome, tipo, polo) values($1, $2, $3)";
         $params = array($curso->getNome(), $curso->getTipo()['id'], $curso->getPolo()->getId());
         pg_query_params($dbCon, $sql, $params);
 
@@ -98,7 +98,7 @@ class CursoDao {
 
         $dbCon = $conexao->getConexao();
 
-        $sql = "delete from " . self::$tabela . " where curso_id=$1";
+        $sql = "delete from " . self::$tabela . " where id_curso=$1";
 
         pg_query_params($dbCon, $sql, Array($id));
         $conexao->closeConexao();

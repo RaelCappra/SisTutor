@@ -82,7 +82,7 @@ class PoloDao {
 
         $dbCon = $conexao->getConexao();
 
-        $sql = "delete from " . self::$tabela . " where polo_id=$1";
+        $sql = "delete from " . self::$tabela . " where id_polo=$1";
 
         pg_query_params($dbCon, $sql, Array($id));
         $conexao->closeConexao();
