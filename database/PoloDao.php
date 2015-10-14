@@ -22,12 +22,12 @@ class PoloDao {
 
             $cidade = $linha['cidade'];
             $nome = $linha['nome'];
-            $estado = $linha['estado'];
+            $uf = $linha['uf'];
             $id = $linha['id_polo'];
 
             $polo->setCidade($cidade);
             $polo->setId($id);
-            $polo->setEstado($estado);
+            $polo->setEstado($uf);
             $polo->setNome($nome);
 
             array_push($polos, $polo);
@@ -52,11 +52,11 @@ class PoloDao {
 
         $cidade = $linha['cidade'];
         $nome = $linha['nome'];
-        $estado = $linha['estado'];
+        $uf = $linha['uf'];
 
         $polo->setCidade($cidade);
         $polo->setId($id);
-        $polo->setEstado($estado);
+        $polo->setEstado($uf);
         $polo->setNome($nome);
 
         $conexao->closeConexao();
