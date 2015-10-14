@@ -2,6 +2,7 @@
 
 include_once('../lib/Conexao.php');
 include_once('../model/Tutor.php');
+include_once('../model/Pessoa.php');
 
 class TutorDao {
 
@@ -64,7 +65,7 @@ class TutorDao {
         $tutor->setNome($nome);
         $tutor->setTitulacao($titulacao);
         $tutor->setTutorId($tutorId);
-        
+
         return tutor;
     }
 
@@ -76,8 +77,8 @@ class TutorDao {
         $paramsPessoa = array($tutor->getCpf(), $tutor->getNome(), $tutor->getSobrenome(), $tutor->getEmail());
         $result = pg_query_params($dbCon, $sqlPessoa, $paramsPessoa);
         $id = 0;
-        
-        if($linha = pg_fetch_assoc($result)){
+
+        if ($linha = pg_fetch_assoc($result)) {
             $id = $linha['id_pessoa'];
         }
 
@@ -107,23 +108,34 @@ class TutorDao {
         return $tarefas;
     }
 
-    function update($tutor) {
+    function updateTutor($tutor) {
         $conexao = new Conexao();
 
         $dbCon = $conexao->getConexao();
 
-        $sql = "select * from " . self::$tabelaCurso . " where lixeira=false";
+        $sql = "update " . self::$tabela . " set pessoa=$1, formacao=$2, titulacao=$3 where id_tutor=$4";
 
-        $result = pg_query($dbCon, $sql);
-
-        $tarefas = Array();
-        while ($linha = pg_fetch_assoc($result)) {
-            array_push($tarefas, $linha);
-        }
+        $params = Array($tutor->getId(), $tutor->getFormacao()['id'],
+            $tutor->getTitulacao()['id'], $tutor->getTutorId());
+        
+        pg_query_params($dbCon, $sql, $params);
 
         $conexao->closeConexao();
+    }
+    
+    function updatePessoa($pessoa) {
+        $tabela = "sistutor.pessoa";
+        $conexao = new Conexao();
 
-        return $tarefas;
+        $dbCon = $conexao->getConexao();
+
+        $sql = "update $tabela set nome=$1, sobrenome=$2, cpf=$3, email=$4 where id_pessoa=$5";
+
+        $params = Array($pessoa->getNome(), $pessoa->getSobrenome(), $pessoa->getCpf->getId(),
+            $pessoa->getEmail(), $pessoa->getId());
+        pg_query_params($dbCon, $sql, $params);
+
+        $conexao->closeConexao();
     }
 
 }
