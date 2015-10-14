@@ -1,8 +1,8 @@
 <?php
 
-include('../lib/Conexao.php');
-include('../model/Disciplina.php');
-include('../database/CursoDao.php');
+include_once('../lib/Conexao.php');
+include_once('../model/Disciplina.php');
+include_once('../database/CursoDao.php');
 
 class DisciplinaDao {
 

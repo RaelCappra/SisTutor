@@ -1,7 +1,7 @@
 <?php
 
-include('../lib/Conexao.php');
-include('../model/Polo.php');
+include_once('../lib/Conexao.php');
+include_once('../model/Polo.php');
 
 class PoloDao {
 

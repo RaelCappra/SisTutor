@@ -1,5 +1,5 @@
 <?php
-include('../lib/Conexao.php');
+include_once('../lib/Conexao.php');
 
 
 class TarefaDao {
