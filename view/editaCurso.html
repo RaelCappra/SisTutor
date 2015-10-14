@@ -9,24 +9,29 @@ and open the template in the editor.
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../lib/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../lib/css/bootstrap-theme.min.css">
+        <script src="../lib/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <form action="../controller/FrontController.php" method="post">
-            Nome:<input type="text"  name="nome" value="{NOME_CURSO}"><br>
-            Tipo:<select name="tipo">
-                    <!-- BEGIN BLOCK_TIPO -->
-                    <option value="{ID_TIPO}" {SELECTED}>{NOME_TIPO}</option>
-                    <!-- END BLOCK_TIPO -->
-                 </select>
-            Polo:<select name="polo">
-                    <!-- BEGIN BLOCK_POLO -->
-                    <option value="{ID_POLO}" {SELECTED}>{NOME_POLO}</option>
-                    <!-- END BLOCK_POLO -->
-                 </select>
-            <input type="hidden" name="id" value="{ID_CURSO}">
-            <input type="hidden" name="controller" value="CursoController">
-            <input type="hidden" name="action" value="update()">
-            <input type="submit" value="Add">
-        </form>
+        <div class="container">
+            <form action="../controller/FrontController.php" method="post">
+                Nome:<input type="text"  name="nome" value="{NOME_CURSO}"><br>
+                Tipo:<select name="tipo">
+                        <!-- BEGIN BLOCK_TIPO -->
+                        <option value="{ID_TIPO}" {SELECTED}>{NOME_TIPO}</option>
+                        <!-- END BLOCK_TIPO -->
+                     </select>
+                Polo:<select name="polo">
+                        <!-- BEGIN BLOCK_POLO -->
+                        <option value="{ID_POLO}" {SELECTED}>{NOME_POLO}</option>
+                        <!-- END BLOCK_POLO -->
+                     </select>
+                <input type="hidden" name="id" value="{ID_CURSO}">
+                <input type="hidden" name="controller" value="CursoController">
+                <input type="hidden" name="action" value="update()">
+                <input type="submit" value="Add">
+            </form>
+        </div>
     </body>
 </html>
