@@ -1,7 +1,7 @@
 <?php
 include_once '../model/Curso.php';
 include_once('../model/Polo.php');
-
+require_once("../lib/PDF.php");
 class CursoController {
     function delete($id) {
          $curso = new Curso();
@@ -49,5 +49,35 @@ class CursoController {
      function getTipos() {
          $curso = new Curso();
          return $curso->getTipos();
+     }
+     
+     function relatorioCursoPorPolo(){
+        $pdf= new PDF("P","pt","A4");
+        $relatorio = $this->read();
+        $cabeçalhoTabela = array('Curso', 'Tipo');
+        $polo = "";
+        $array = array();
+        foreach ($relatorio as $value) {
+            if($polo == ""){
+                $polo = $value->getPolo()->getId();
+                $pdf->setVendedor($value->getPolo()->getNome());
+                $pdf->AddPage();
+            }
+
+            if($polo != $value->getPolo()->getId()){
+                $pdf->BasicTable($cabeçalhoTabela, $array);
+                $array = array();
+                $polo = $value->getPolo()->getId();
+                $pdf->setVendedor($value->getPolo()->getNome());
+                $pdf->AddPage();
+                array_push($array, array($value->getNome(), $value->getTipo()['descricao'])); 
+            }else{
+                array_push($array, array($value->getNome(), $value->getTipo()['descricao'])); 
+            }
+        }
+        
+        $pdf->BasicTable($cabeçalhoTabela, $array);
+
+        $pdf->Output();
      }
 }

@@ -17,7 +17,7 @@ class CursoDao {
         $dbCon = $conexao->getConexao();
         
         $sql = "select id_curso,nome, polo, nome, $tipoCurso.id_tipo_curso, descricao from " . self::$tabela . 
-                " join $tipoCurso on id_tipo_curso = tipo";
+                " join $tipoCurso on id_tipo_curso = tipo order by polo desc";
 
         $result = pg_query($dbCon, $sql);
 
@@ -44,6 +44,8 @@ class CursoDao {
 
         return $cursos;
     }
+    
+    
 
     function getById($id) {
         $conexao = new Conexao();
