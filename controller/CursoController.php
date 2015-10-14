@@ -3,10 +3,11 @@ include_once '../model/Curso.php';
 include_once('../model/Polo.php');
 
 class CursoController {
-    function delete() {
+    function delete($id) {
          $curso = new Curso();
-         $curso->setId($_GET['id']);
+         $curso->setId($id);
          $curso->delete();
+         header("location: ../view/index.php");
      }
      
      function read() {
@@ -28,6 +29,7 @@ class CursoController {
          $tipo = array('id' => $_POST['tipo']);
          $curso->setTipo($tipo);
          $curso->create();
+         header("location: ../view/index.php");
      }
      
      function update() {
@@ -40,6 +42,7 @@ class CursoController {
          $curso->setTipo($tipo);
          $curso->setId($_POST['id']);
          $curso->update();
+         header("location: ../view/index.php");
      }
      
      function getTipos() {

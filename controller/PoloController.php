@@ -9,10 +9,11 @@
 include_once('../model/Polo.php');
 class PoloController {
     
-    function delete() {
+    function delete($id) {
          $polo = new Polo();
-         $polo->setId($_GET['id']);
+         $polo->setId($id);
          $polo->delete();
+         header("location: ../view/index.php");
      }
      
      function read() {
@@ -32,6 +33,7 @@ class PoloController {
          $polo->setEstado($_POST['estado']);
          $polo->setNome($_POST['nome']);
          $polo->create();
+         header("location: ../view/index.php");
      }
      
      function update() {
@@ -41,5 +43,6 @@ class PoloController {
          $polo->setNome($_POST['nome']);
          $polo->setId($_POST['id']);
          $polo->update();
+         header("location: ../view/index.php");
      }
 }

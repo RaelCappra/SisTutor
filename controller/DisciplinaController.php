@@ -4,10 +4,11 @@ include_once '../model/Disciplina.php';
 include_once('../model/Curso.php');
 include_once('../model/Tutor.php');
 class DisciplinaController {
-    function delete() {
+    function delete($id) {
          $disciplina = new Disciplina();
-         $disciplina->setId($_GET['id']);
+         $disciplina->setId($id);
          $disciplina->delete();
+         header("location: ../view/index.php");
      }
      
      function read() {
@@ -31,6 +32,7 @@ class DisciplinaController {
          $curso->setId($_POST['curso']);
          $disciplina->setCurso($curso->getById());
          $disciplina->create();
+         header("location: ../view/index.php");
      }
      
      function update() {
@@ -44,5 +46,6 @@ class DisciplinaController {
          $disciplina->setCurso($curso->getById());
          $disciplina->setId($_POST['id']);
          $disciplina->create();
+         header("location: ../view/index.php");
      }
 }
