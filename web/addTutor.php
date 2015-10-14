@@ -18,13 +18,13 @@ $titulacao = $tutorController->getTitulacoes();
 $formacao = $tutorController->getFormacoes();
 
 foreach ($titulacao as $t) {
-    $tpl->ID_TITULACAO = $t['id'];
+    $tpl->ID_TITULACAO = $t['id_titulacao'];
     $tpl->NOME_TITULACAO = $t['descricao'];
     $tpl->block("BLOCK_TITULACAO");
 }
 
 foreach ($formacao as $p) {
-    $tpl->ID_FORMACAO = $p['id'];
+    $tpl->ID_FORMACAO = $p['id_formacao'];
     $tpl->NOME_FORMACAO = $p['descricao'];
     $tpl->block("BLOCK_FORMACAO");
 }

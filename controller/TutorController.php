@@ -4,7 +4,7 @@ include_once '../model/Tutor.php';
 class TutorController {
     function delete($id) {
         $tutor = new Tutor();
-        $tutor->setId($id);
+        $tutor->setTutorId($id);
         $tutor->delete();
         header("location: ../view/index.php");
     }

@@ -15,7 +15,7 @@ $tutorController = new TutorController();
 $tutors = $tutorController->read();
 
 foreach ($tutors as $t) {
-    $tpl->ID_TUTOR = $t->getId();
+    $tpl->ID_TUTOR = $t->getTutorId();
     $tpl->TUTOR_NOME = $t->getNome();
     $tpl->TUTOR_SOBRENOME = $t->getSobrenome();
     $tpl->TUTOR_CPF = $t->getCpf();

@@ -115,7 +115,7 @@ class TutorDao {
         }
 
         $sqlTutor = "insert into sistutor.tutor (pessoa, formacao, titulacao) values($1,$2,$3)";
-        $paramsTutor = array($id, $tutor->getFormacoes(), $tutor->getTitulacoes());
+        $paramsTutor = array($id, $tutor->getFormacao()['id'], $tutor->getTitulacao()['id']);
         pg_query_params($dbCon, $sqlTutor, $paramsTutor);
 
         $conexao->closeConexao();
@@ -126,7 +126,7 @@ class TutorDao {
 
         $dbCon = $conexao->getConexao();
 
-        $sql = "select * from " . self::$tabelaCurso . " where id_tutor=" . $id;
+        $sql = "delete from " . self::$tabela . " where id_tutor=" . $id;
 
         $result = pg_query($dbCon, $sql);
 
