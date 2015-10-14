@@ -1,28 +1,32 @@
 <?php
+include_once '../lib/check_login.php';
+if (!checkLogin()){
+    header("location: ../view/index.php");
+}
+
+require_once '../controller/TutorController.php';
+require_once("../lib/raelgc/view/Template.php");
+
+use raelgc\view\Template;
+
+$tpl = new Template("../view/addTutor.html");
 
 
-    require_once '../controller/TutorController.php';
-    require_once("../lib/raelgc/view/Template.php");
-    use raelgc\view\Template;
+$tutorController = new TutorController();
 
-    $tpl = new Template("../view/addTutor.html");
-    
+$titulacao = $tutorController->getTitulacao();
+$formacao = $tutorController->getFormacao();
 
-    $tutorController = new TutorController();
-    
-    $titulacao = $tutorController->getTitulacao();
-    $formacao = $tutorController->getFormacao();
-    
-    foreach($titulacao as $t){
-        $tpl->ID_TITULACAO = $t['id_titulacao'];
-        $tpl->NOME_TITULACAO = $t['descricao'];
-        $tpl->block("BLOCK_TITULACAO");
-    }
-    
-    foreach($formacao as $p){
-        $tpl->ID_FORMACAO = $p['id_formacao'];
-        $tpl->NOME_FORMACAO = $p['descricao'];
-        $tpl->block("BLOCK_FORMACAO");
-    }
+foreach ($titulacao as $t) {
+    $tpl->ID_TITULACAO = $t['id_titulacao'];
+    $tpl->NOME_TITULACAO = $t['descricao'];
+    $tpl->block("BLOCK_TITULACAO");
+}
 
-    $tpl->show();
+foreach ($formacao as $p) {
+    $tpl->ID_FORMACAO = $p['id_formacao'];
+    $tpl->NOME_FORMACAO = $p['descricao'];
+    $tpl->block("BLOCK_FORMACAO");
+}
+
+$tpl->show();
