@@ -12,6 +12,7 @@
     $tpl->NOME_POLO = $polo->getNome();
     $tpl->CIDADE_POLO = $polo->getCidade();
     $tpl->ESTADO_POLO = $polo->getEstado();
+    $tpl->ID_POLO = $polo->getId();
 
 
     $tpl->show();

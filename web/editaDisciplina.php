@@ -15,6 +15,7 @@
     $disciplina = $disciplinaController->getById($_GET['id']);
     
     $tpl->NOME_DISCIPLINA = $disciplina->getNome();
+    $tpl->ID_DISCIPLINA = $disciplina->getId();
     
     $cursos = $cursoController->read();
     $tutors = $tutorController->read();
