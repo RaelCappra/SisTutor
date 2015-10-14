@@ -13,10 +13,17 @@
  */
 include_once '../database/TutorDao.php';
 class Tutor extends Pessoa{
-    private $formacao, $titulacao;
+    private $formacao, $titulacao, $tutorId;
 
-        
-    function getFormacao() {
+    function getTutorId() {
+        return $this->tutorId;
+    }
+
+    function setTutorId($tutorId) {
+        $this->tutorId = $tutorId;
+    }
+
+        function getFormacao() {
         return $this->formacao;
     }
 
