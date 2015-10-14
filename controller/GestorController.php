@@ -25,6 +25,10 @@ class GestorController {
         
         //TODO: SESSIONS
         if($gestor->autentica()){
+            session_start();
+            session_cache_expire(7);
+            $_SESSION['login'] = $login;
+            
             header("location: ../view/main.html");
         }else{
             header("location: ../view");
