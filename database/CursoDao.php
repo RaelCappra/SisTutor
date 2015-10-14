@@ -15,7 +15,7 @@ class CursoDao {
         $tipoCurso = "sistutor.tipo_curso";
         
         $dbCon = $conexao->getConexao();
-        //criar join com pessoa
+        
         $sql = "select nome, polo, descricao from " . self::$tabela . 
                 " join $tipoCurso on id_tipo_curso = tipo";
 
@@ -47,28 +47,38 @@ class CursoDao {
 
     function getById($id) {
         $conexao = new Conexao();
-
-        $dbCon = $conexao->getConexao();
-        //criar join com pessoa
-        $sql = "select * from " . self::$tabela . " where id_polo = $1";
-
-        $result = pg_query_params($dbCon, $sql, Array($id));
-        $linha = pg_fetch_assoc($result);
+        $tipoCurso = "sistutor.tipo_curso";
         
-        $polo = new Polo();
+        $dbCon = $conexao->getConexao();
+        
+        $sql = "select nome, polo, descricao from " . self::$tabela . 
+                " join $tipoCurso on id_tipo_curso = tipo" .
+                " where id_curso=$1";
 
-        $cidade = $linha['cidade'];
-        $nome = $linha['nome'];
-        $estado = $linha['estado'];
-
-        $polo->setCidade($cidade);
-        $polo->setId($id);
-        $polo->setEstado($estado);
-        $polo->setNome($nome);
+        $result = pg_query($dbCon, $sql);
+        $curso = 0;
+        
+        $linha = pg_fetch_assoc($result);
+        if ($linha) {
+            $curso = new Curso();
+            
+            $nome = $linha['nome'];
+            $tipo = $linha['descricao'];
+            $idPolo = $linha['polo'];
+            $id = $linha['id'];
+            
+            $polo = (new PoloDao())->getById($idPolo);
+            
+            $curso->setId($id);
+            $curso->setNome($nome);
+            $curso->setPolo($polo);
+            $curso->setTipo($tipo);
+            
+        }
 
         $conexao->closeConexao();
 
-        return $polo;
+        return $curso;
     }
 
     function create($polo) {
