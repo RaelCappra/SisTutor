@@ -9,27 +9,32 @@ and open the template in the editor.
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../lib/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../lib/css/bootstrap-theme.min.css">
+        <script src="../lib/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <form action="../controller/FrontController.php" method="post">
-            Nome:<input type="text"  name="nome" value="{NOME_TUTOR}"><br>
-            Sobrenome:<input type="text"  name="sobrenome" value="{SOBRENOME_TUTOR}"><br>
-            Email:<input type="text"  name="email" value="{EMAIL_TUTOR}"><br>
-            CPF:<input type="text"  name="cpf" value="{CPF_TUTOR}"><br>
-            Formacao:<select name="formacao">
-                    <!-- BEGIN BLOCK_FORMACAO -->
-                    <option value="{ID_FORMACAO}" {SELECTED}>{NOME_FORMACAO}</option>
-                    <!-- END BLOCK_FORMACAO -->
-                 </select>
-            Titulacao:<select name="titulacao">
-                    <!-- BEGIN BLOCK_TITULACAO -->
-                    <option value="{ID_TITULACAO}" {SELECTED}>{NOME_TITULACAO}</option>
-                    <!-- END BLOCK_TITULACAO -->
-                 </select>
-            <input type="hidden" name="id" value="{ID_TUTOR}">
-            <input type="hidden" name="controller" value="TutorController">
-            <input type="hidden" name="action" value="update()">
-            <input type="submit" value="Add">
-        </form>
+        <div class="container">
+            <form action="../controller/FrontController.php" method="post">
+                Nome:<input type="text"  name="nome" value="{NOME_TUTOR}"><br>
+                Sobrenome:<input type="text"  name="sobrenome" value="{SOBRENOME_TUTOR}"><br>
+                Email:<input type="text"  name="email" value="{EMAIL_TUTOR}"><br>
+                CPF:<input type="text"  name="cpf" value="{CPF_TUTOR}"><br>
+                Formacao:<select name="formacao">
+                        <!-- BEGIN BLOCK_FORMACAO -->
+                        <option value="{ID_FORMACAO}" {SELECTED}>{NOME_FORMACAO}</option>
+                        <!-- END BLOCK_FORMACAO -->
+                     </select>
+                Titulacao:<select name="titulacao">
+                        <!-- BEGIN BLOCK_TITULACAO -->
+                        <option value="{ID_TITULACAO}" {SELECTED}>{NOME_TITULACAO}</option>
+                        <!-- END BLOCK_TITULACAO -->
+                     </select>
+                <input type="hidden" name="id" value="{ID_TUTOR}">
+                <input type="hidden" name="controller" value="TutorController">
+                <input type="hidden" name="action" value="update()">
+                <input type="submit" value="Add">
+            </form>
+        </div>
     </body>
 </html>

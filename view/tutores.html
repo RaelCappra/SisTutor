@@ -9,25 +9,30 @@ and open the template in the editor.
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../lib/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../lib/css/bootstrap-theme.min.css">
+        <script src="../lib/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <form enctype="multipart/form-data" action="../controller/FrontController.php" method="post">
-            <input type="hidden" name="controller" value="TutorController">
-                <table class="table">
-                    <!-- BEGIN BLOCK_TUTOR -->
-                    <tr>
-                        <td>{TUTOR_NOME}</td>
-                        <td>{TUTOR_SOBRENOME}</td>
-                        <td>{TUTOR_CPF}</td>
-                        <td>{TUTOR_EMAIL}</td>
-                        <td>{TUTOR_FORMACAO}</td>
-                        <td>{TUTOR_TITULACAO}</td>
-                        <td><a href="../web/editaTutor.php?id={ID_TUTOR}">Editar</a></td>
-                        <td><button name="action" value="deletar({ID_TUTOR})">Deletar</button></td>
-                    </tr>  
-                    <!-- END BLOCK_TUTOR -->
-                </table>
-    
-        </form>
+        <div class="container">
+            <form enctype="multipart/form-data" action="../controller/FrontController.php" method="post">
+                <input type="hidden" name="controller" value="TutorController">
+                    <table class="table">
+                        <!-- BEGIN BLOCK_TUTOR -->
+                        <tr>
+                            <td>{TUTOR_NOME}</td>
+                            <td>{TUTOR_SOBRENOME}</td>
+                            <td>{TUTOR_CPF}</td>
+                            <td>{TUTOR_EMAIL}</td>
+                            <td>{TUTOR_FORMACAO}</td>
+                            <td>{TUTOR_TITULACAO}</td>
+                            <td><a href="../web/editaTutor.php?id={ID_TUTOR}">Editar</a></td>
+                            <td><button name="action" value="deletar({ID_TUTOR})">Deletar</button></td>
+                        </tr>  
+                        <!-- END BLOCK_TUTOR -->
+                    </table>
+
+            </form>
+        </div>
     </body>
 </html>
