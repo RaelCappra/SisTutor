@@ -7,6 +7,39 @@ include_once('../model/Pessoa.php');
 class TutorDao {
 
     private static $tabela = "sistutor.tutor";
+    
+    private static function makeTutor($linha) {
+        $nome = $linha['nome'];
+        $pessoaId = $linha['id_pessoa'];
+        $sobrenome = $linha['sobrenome'];
+        $cpf = $linha['cpf'];
+        $email = $linha['email'];
+
+        $formacaoId = $linha['id_formacao'];
+        $formacaoDescricao = $linha['d_formacao'];
+
+        $formacao = Array("descricao" => $formacaoDescricao, "id" => $formacaoId);
+
+
+        $titulacaoId = $linha['id_titulacao'];
+        $titulacaoDescricao = $linha['d_titulacao'];
+        $titulacao = Array("descricao" => $titulacaoDescricao, "id" => $titulacaoId);
+
+        $tutorId = $linha['id_tutor'];
+
+        $tutor = new Tutor();
+
+        $tutor->setCpf($cpf);
+        $tutor->setEmail($email);
+        $tutor->setFormacao($formacao);
+        $tutor->setId($pessoaId);
+        $tutor->setSobrenome($sobrenome);
+        $tutor->setNome($nome);
+        $tutor->setTitulacao($titulacao);
+        $tutor->setTutorId($tutorId);
+
+        return $tutor;
+    }
 
     function read() {
         $tabela = self::$tabela;
@@ -30,7 +63,7 @@ class TutorDao {
 
         $tutores = Array();
         while ($linha = pg_fetch_assoc($result)) {
-            $tutor = makeTutor($linha);
+            $tutor = self::makeTutor($linha);
             array_push($tutores, $tutor);
         }
 
@@ -68,38 +101,7 @@ class TutorDao {
         return $tutores;
     }
 
-    function makeTutor($linha) {
-        $nome = $linha['nome'];
-        $pessoaId = $linha['id_pessoa'];
-        $sobrenome = $linha['sobrenome'];
-        $cpf = $linha['cpf'];
-        $email = $linha['email'];
-
-        $formacaoId = $linha['id_formacao'];
-        $formacaoDescricao = $linha['d_formacao'];
-
-        $formacao = Array("descricao" => $formacaoDescricao, "id" => $formacaoId);
-
-
-        $titulacaoId = $linha['id_titulacao'];
-        $titulacaoDescricao = $linha['d_titulacao'];
-        $titulacao = Array("descricao" => $titulacaoDescricao, "id" => $titulacaoId);
-
-        $tutorId = $linha['id_tutor'];
-
-        $tutor = new Tutor();
-
-        $tutor->setCpf($cpf);
-        $tutor->setEmail($email);
-        $tutor->setFormacao($formacao);
-        $tutor->setId($pessoaId);
-        $tutor->setSobrenome($sobrenome);
-        $tutor->setNome($nome);
-        $tutor->setTitulacao($titulacao);
-        $tutor->setTutorId($tutorId);
-
-        return tutor;
-    }
+    
 
     function create($tutor) {
         $conexao = new Conexao();
