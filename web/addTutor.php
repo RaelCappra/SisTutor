@@ -10,7 +10,7 @@
 
     $tutorController = new TutorController();
     
-    $titulacao = $cursoController->getTitulacao();
+    $titulacao = $tutorController->getTitulacao();
     $formacao = $tutorController->getFormacao();
     
     foreach($titulacao as $t){
