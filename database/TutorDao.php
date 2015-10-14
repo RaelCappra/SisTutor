@@ -22,6 +22,38 @@ class TutorDao {
                 " from $tabela join $pessoa on $pessoa.id_pessoa = $tabela.pessoa" .
                 " join $formacao on $formacao.id_formacao = $tabela.formacao" .
                 " join $titulacao on $titulacao.id_titulacao = $tabela.titulacao";
+        
+        /*echo $sql;
+        die();
+        */
+        $result = pg_query($dbCon, $sql);
+
+        $tutores = Array();
+        while ($linha = pg_fetch_assoc($result)) {
+            $tutor = makeTutor($linha);
+            array_push($tutores, $tutor);
+        }
+
+        $conexao->closeConexao();
+
+        return $tutores;
+    }
+    
+    function getById($id) {
+        $tabela = self::$tabela;
+        $pessoa = "sistutor.pessoa";
+        $formacao = "sistutor.formacao";
+        $titulacao = "sistutor.titulacao";
+        $conexao = new Conexao();
+
+        $dbCon = $conexao->getConexao();
+
+        $sql = "select id_tutor, $pessoa.id_pessoa, $pessoa.nome, $pessoa.sobrenome, $pessoa.cpf, $pessoa.email," .
+                " $formacao.id_formacao, $formacao.descricao as d_formacao, $titulacao.id_titulacao, $titulacao.descricao as d_titulacao" .
+                " from $tabela join $pessoa on $pessoa.id_pessoa = $tabela.pessoa" .
+                " join $formacao on $formacao.id_formacao = $tabela.formacao" .
+                " join $titulacao on $titulacao.id_titulacao = $tabela.titulacao" .
+                " where id_tutor = $id";
 
         $result = pg_query($dbCon, $sql);
 
