@@ -1,6 +1,7 @@
 <?php
+
 include_once '../lib/check_login.php';
-if (!checkLogin()){
+if (!checkLogin()) {
     header("location: ../view/index.php");
 }
 
@@ -38,14 +39,21 @@ foreach ($cursos as $t) {
 }
 
 foreach ($tutors as $p) {
-    $tpl->ID_TUTOR = $p->getId();
-    $tpl->NOME_TUTOR = $p->getNome();
-
-    if ($p->getId() == $disciplina->getTutor()->getId()) {
-        $tpl->SELECTED = "selected";
-    } else {
-        $tpl->clear("SELECTED");
+    $tutoresDisciplina = $disciplina->getTutores();
+    foreach ($tutoresDisciplina as $tutor) {
+        if ($tutor->getId() != $p->getId()) {
+            $tpl->ID_TUTOR = $p->getId();
+            $tpl->NOME_TUTOR = $p->getNome();
+        }
     }
+
+
+
+    //if ($p->getId() == $disciplina->getTutor()->getId()) {
+    //    $tpl->SELECTED = "selected";
+    //} else {
+    $tpl->clear("SELECTED");
+    //}
 
     $tpl->block("BLOCK_TUTOR");
 }
