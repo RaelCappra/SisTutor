@@ -177,7 +177,7 @@ class TutorDao {
         $conexao = new Conexao();
 		
         $dbCon = $conexao->getConexao();
-        $sql = "select * from sistutor.titulacao";
+        $sql = "select *, id_titulacao as id from sistutor.titulacao";
 
         $result = pg_query($dbCon, $sql);
 
@@ -195,7 +195,7 @@ class TutorDao {
         $conexao = new Conexao();
 		
         $dbCon = $conexao->getConexao();
-        $sql = "select * from sistutor.formacao";
+        $sql = "select *, id_formacao as id from sistutor.formacao";
 
         $result = pg_query($dbCon, $sql);
 
