@@ -16,7 +16,7 @@ class CursoDao {
         
         $dbCon = $conexao->getConexao();
         
-        $sql = "select nome, polo, descricao from " . self::$tabela . 
+        $sql = "select nome, polo, nome, $tipoCurso.id_tipo_curso, descricao from " . self::$tabela . 
                 " join $tipoCurso on id_tipo_curso = tipo";
 
         $result = pg_query($dbCon, $sql);
@@ -24,7 +24,7 @@ class CursoDao {
         $cursos = Array();
         while ($linha = pg_fetch_assoc($result)) {
             $nome = $linha['nome'];
-            $tipo = $linha['descricao'];
+            $tipo = $tipo = Array("descricao"=>$linha['descricao'], "id"=>$linha["id_tipo_curso"]);
             $idPolo = $linha['polo'];
             $id = $linha['id'];
             
@@ -50,8 +50,8 @@ class CursoDao {
         $tipoCurso = "sistutor.tipo_curso";
         
         $dbCon = $conexao->getConexao();
-        
-        $sql = "select nome, polo, descricao from " . self::$tabela . 
+        $tabela = self::$tabela;
+        $sql = "select nome, polo, id_tipo_curso, descricao from " . self::$tabela . 
                 " join $tipoCurso on id_tipo_curso = tipo" .
                 " where id_curso=$1";
 
@@ -63,7 +63,7 @@ class CursoDao {
             $curso = new Curso();
             
             $nome = $linha['nome'];
-            $tipo = $linha['descricao'];
+            $tipo = Array("descricao"=>$linha['descricao'], "id"=>$linha["id_tipo_curso"]);
             $idPolo = $linha['polo'];
             $id = $linha['id'];
             
@@ -81,11 +81,10 @@ class CursoDao {
         return $curso;
     }
 
-    function create($polo) {
+    function create($curso) {
         $conexao = new Conexao();
 
         $dbCon = $conexao->getConexao();
-        //pessoas -> tutor
         $sql = "insert into polo (nome, cidade, uf) values($1, $2, $3)";
         $params = array($polo->getNome(), $polo->getCidade(), $polo->getEstado());
         pg_query_params($dbCon, $sql, $params);
@@ -99,18 +98,18 @@ class CursoDao {
 
         $dbCon = $conexao->getConexao();
 
-        $sql = "delete from " . self::$tabela . " where polo_id=$1";
+        $sql = "delete from " . self::$tabela . " where curso_id=$1";
 
         pg_query_params($dbCon, $sql, Array($id));
         $conexao->closeConexao();
     }
 
-    function update($polo) {
+    function update($curso) {
         $conexao = new Conexao();
 
         $dbCon = $conexao->getConexao();
 
-        $sql = "update " . self::$tabela . " set nome=$1, cidade=$2, uf=$3 where id_polo=$4";
+        $sql = "update " . self::$tabela . " set nome=$1, tipo=$2, uf=$3 where id_polo=$4";
         
         $params = Array($polo->getNome(), $polo->getCidade(), $polo->getEstado(), $polo->getId(),);
         pg_query_params($dbCon, $sql, $params);
