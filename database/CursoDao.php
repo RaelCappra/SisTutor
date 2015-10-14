@@ -1,8 +1,8 @@
 <?php
 
-include('../lib/Conexao.php');
-include('../model/Curso.php');
-include('../database/PoloDao.php');
+include_once('../lib/Conexao.php');
+include_once('../model/Curso.php');
+include_once('../database/PoloDao.php');
 
 
 
