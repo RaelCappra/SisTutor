@@ -69,7 +69,7 @@ class PoloDao {
 
         $dbCon = $conexao->getConexao();
         //pessoas -> tutor
-        $sql = "insert into polo (nome, cidade, uf) values($1, $2, $3)";
+        $sql = "insert into " . self::$tabela . " (nome, cidade, uf) values($1, $2, $3)";
         $params = array($polo->getNome(), $polo->getCidade(), $polo->getEstado());
         pg_query_params($dbCon, $sql, $params);
 
