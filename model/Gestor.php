@@ -12,6 +12,7 @@
  * @author aluno
  */
 include_once '../database/GestorDao.php';
+include_once 'Pessoa.php';
 class Gestor extends Pessoa{
     private $login, $senha;
     function getLogin() {

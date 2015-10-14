@@ -12,7 +12,7 @@
  * @author aluno
  */
 include_once '../database/TutorDao.php';
-
+include_once 'Pessoa.php';
 class Tutor extends Pessoa {
 
     private $formacao, $titulacao, $tutorId;
