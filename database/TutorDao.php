@@ -205,5 +205,26 @@ class TutorDao {
 
         return $formacoes;
     }
+    
+    function listByDisciplina($disciplina) {
+        $conexao = new Conexao();
+        
+        $tutor_disciplina = "sistutor.tutor_disciplina";
+        $dbCon = $conexao->getConexao();
+        //criar join com curso
+        $sql = "select tutor, from $tutor_disciplina where disciplina=$1";
 
+        $result = pg_query_params($dbCon, $sql, Array($disciplina->getId()));
+
+        $tutores = Array();
+        while ($linha = pg_fetch_assoc($result)) {
+            $id = $linha['tutor'];
+            $tutor = $this->getById($id);
+            array_push($tutores, $tutor);
+        }
+
+        $conexao->closeConexao();
+
+        return $tutores;
+    }
 }
