@@ -18,7 +18,7 @@
     foreach($tipos as $t){
         $tpl->ID_TIPO = $t["id_tipo_curso"];
         $tpl->NOME_TIPO = $t["descricao"];
-        if($t["id_tipo_curso"] == $curso->getTipo()){ 
+        if($t["id_tipo_curso"] == $curso->getTipo()['id']){ 
            $tpl->SELECTED = "selected";       
         } else {
             $tpl->clear("SELECTED");
@@ -30,7 +30,7 @@
         $tpl->ID_POLO = $p->getId();
         $tpl->NOME_POLO = $p->getNome();
         
-        if($p->getId() == $curso->getPolo()){ 
+        if($p->getId() == $curso->getPolo()->getId()){ 
            $tpl->SELECTED = "selected";       
         } else {
             $tpl->clear("SELECTED");

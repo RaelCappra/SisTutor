@@ -14,8 +14,8 @@
         $tpl->TUTOR_NOME = $t->getNome();
         $tpl->TUTOR_CPF = $t->getCpf();
         $tpl->TUTOR_EMAIL = $t->getEmail();
-        $tpl->TUTOR_FORMACAO = $t->getFormacao();
-        $tpl->TUTOR_TITULACAO = $t->getTitulacao();
+        $tpl->TUTOR_FORMACAO = $t->getFormacao()['descricao'];
+        $tpl->TUTOR_TITULACAO = $t->getTitulacao()['descricao'];
         
         $tpl->block("BLOCK_TUTOR");
     }

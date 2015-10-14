@@ -19,7 +19,7 @@
         $tpl->ID_TITULACAO = $t['id_titulacao'];
         $tpl->NOME_TITULACAO = $t['descricao'];
         
-        if($t['id_titulacao'] == $tutor->getTitulacao()){ 
+        if($t['id_titulacao'] == $tutor->getTitulacao()['id']){ 
            $tpl->SELECTED = "selected";       
         } else {
             $tpl->clear("SELECTED");
@@ -32,7 +32,7 @@
         $tpl->ID_FORMACAO = $p['id_formacao'];
         $tpl->NOME_FORMACAO = $p['descricao'];
         
-        if($p['id_formacao'] == $tutor->getFormacao()){ 
+        if($p['id_formacao'] == $tutor->getFormacao()['id']){ 
            $tpl->SELECTED = "selected";       
         } else {
             $tpl->clear("SELECTED");
