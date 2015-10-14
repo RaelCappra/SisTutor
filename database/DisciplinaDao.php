@@ -75,10 +75,13 @@ class DisciplinaDao {
 
         $dbCon = $conexao->getConexao();
 
-        $sql = "insert into disciplina (nome, curso) values($1, $2)";
+        $sql = "insert into sistutor.disciplina (nome, curso) values($1, $2) returning id_disciplina as id";
         $params = array($disciplina->getNome(), $disciplina->getCurso()->getId());
-        pg_query_params($dbCon, $sql, $params);
-
+        $result = pg_query_params($dbCon, $sql, $params);
+        if($linha = pg_fetch_assoc($result)){
+            return $linha['id'];
+        }
+        return 0;
         $conexao->closeConexao();
     }
 
@@ -148,5 +151,4 @@ class DisciplinaDao {
         
         return pg_fetch_all($result);
     }
-
 }

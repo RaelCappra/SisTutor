@@ -77,4 +77,7 @@ class Tutor extends Pessoa {
         return $tutorDao->getFormacoes();
     }
     
+    function addTutorDisciplina($tutor, $disciplina){
+        (new TutorDao())->addTutorDisciplina($tutor, $disciplina);
+    }
 }

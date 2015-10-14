@@ -230,7 +230,7 @@ class TutorDao {
         return $tutores;
     }
     
-    function addTutorDisciplina($tutor, $disciplina){
+    function addTutorDisciplina($id_tutor, $id_disciplina){
         $conexao = new Conexao();
         
         $tutor_disciplina = "sistutor.tutor_disciplina";
@@ -238,7 +238,7 @@ class TutorDao {
         
         $sql = "insert into $tutor_disciplina (id_tutor, id_disciplina, dt_inicio) values " .
                 " ($1, $2, now())";
-        pg_query_params($dbCon, $sql, Array($tutor->getId(), $disciplina->getId()));
+        pg_query_params($dbCon, $sql, Array($id_tutor, $id_disciplina));
         
         $conexao->closeConexao();
     }

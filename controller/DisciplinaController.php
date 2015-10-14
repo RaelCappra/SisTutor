@@ -30,12 +30,15 @@ class DisciplinaController {
         $disciplina = new Disciplina();
         $disciplina->setNome($_POST['nome']);
         $tutor = new Tutor();
-        $tutor->setTutorId($_POST['tutor']);
-        $disciplina->setTutor($tutor->getById());
+        $id_tutor = $_POST['tutor'];
+        
+        //$disciplina->setTutor($tutor->getById());
         $curso = new Curso();
         $curso->setId($_POST['curso']);
         $disciplina->setCurso($curso->getById());
-        $disciplina->create();
+        $id_disciplina = $disciplina->create();
+        
+        $tutor->addTutorDisciplina($id_tutor, $id_disciplina);
         header("location: ../view/index.php");
     }
 
@@ -53,7 +56,7 @@ class DisciplinaController {
         header("location: ../view/index.php");
     }
 
-    //TODO IMPLEMENTAR DE MANHA
+    
     function relatorioDisciplinasPorCurso($id) {
         $pdf = new PDF("P", "pt", "A4");
 

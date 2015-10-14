@@ -65,7 +65,7 @@ class Disciplina {
 
     function create() {
         $disciplinaDao = new DisciplinaDao();
-        $disciplinaDao->create($this);
+        return $disciplinaDao->create($this);
     }
 
     function update() {
