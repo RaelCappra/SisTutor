@@ -137,5 +137,41 @@ class TutorDao {
 
         $conexao->closeConexao();
     }
+    
+    function getTitulacao(){
+        $conexao = new Conexao();
+		
+        $dbCon = $conexao->getConexao();
+        $sql = "select * from sistutor.titulacao";
+
+        $result = pg_query($dbCon, $sql);
+
+        $tarefas = Array();		
+        while ($linha = pg_fetch_assoc($result)) {
+                array_push($tarefas, $linha);
+        }
+
+        $conexao->closeConexao();
+
+        return $tarefas;
+    }
+    
+    function getFormacao(){
+        $conexao = new Conexao();
+		
+        $dbCon = $conexao->getConexao();
+        $sql = "select * from sistutor.formacao";
+
+        $result = pg_query($dbCon, $sql);
+
+        $tarefas = Array();		
+        while ($linha = pg_fetch_assoc($result)) {
+                array_push($tarefas, $linha);
+        }
+
+        $conexao->closeConexao();
+
+        return $tarefas;
+    }
 
 }
