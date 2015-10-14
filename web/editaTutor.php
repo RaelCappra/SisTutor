@@ -20,8 +20,8 @@ $tpl->CPF_TUTOR = $tutor->getCpf();
 $tpl->ID_TUTOR = $tutor->getTutorId();
 $tpl->ID_PESSOA = $tutor->getId();
 
-$titulacao = $tutorController->getTitulacao();
-$formacao = $tutorController->getFormacao();
+$titulacao = $tutorController->getTitulacoes();
+$formacao = $tutorController->getFormacoes();
 
 foreach ($titulacao as $t) {
     $tpl->ID_TITULACAO = $t['id_titulacao'];

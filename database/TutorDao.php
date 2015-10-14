@@ -147,8 +147,8 @@ class TutorDao {
 
         $sql = "update " . self::$tabela . " set pessoa=$1, formacao=$2, titulacao=$3 where id_tutor=$4";
 
-        $params = Array($tutor->getId(), $tutor->getFormacoes()['id'],
-            $tutor->getTitulacoes()['id'], $tutor->getTutorId());
+        $params = Array($tutor->getId(), $tutor->getFormacao()['id'],
+            $tutor->getTitulacao()['id'], $tutor->getTutorId());
 
         pg_query_params($dbCon, $sql, $params);
 
@@ -163,7 +163,7 @@ class TutorDao {
 
         $sql = "update $tabela set nome=$1, sobrenome=$2, cpf=$3, email=$4 where id_pessoa=$5";
 
-        $params = Array($pessoa->getNome(), $pessoa->getSobrenome(), $pessoa->getCpf->getId(),
+        $params = Array($pessoa->getNome(), $pessoa->getSobrenome(), $pessoa->getCpf(),
             $pessoa->getEmail(), $pessoa->getId());
         pg_query_params($dbCon, $sql, $params);
 
