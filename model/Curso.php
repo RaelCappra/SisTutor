@@ -62,6 +62,10 @@ class Curso {
          $cursoDao->update($this);
      }
      
+     function getTipos() {
+         $cursoDao = new CursoDao();
+         $cursoDao->getTipos();
+     }
 
 
 }
