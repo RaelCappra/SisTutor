@@ -37,6 +37,7 @@ class TutorDao {
         $tutor->setNome($nome);
         $tutor->setTitulacao($titulacao);
         $tutor->setTutorId($tutorId);
+        $tutor->setId($pessoaId);
 
         return $tutor;
     }
@@ -224,7 +225,7 @@ class TutorDao {
             $tutor = $this->getById($id);
             array_push($tutores, $tutor);
         }
-
+        //die();
         $conexao->closeConexao();
 
         return $tutores;

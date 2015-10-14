@@ -41,8 +41,8 @@ foreach ($cursos as $t) {
 foreach ($tutors as $p) {
     $tutoresDisciplina = $disciplina->getTutores();
     foreach ($tutoresDisciplina as $tutor) {
-        if ($tutor->getId() != $p->getId()) {
-            $tpl->ID_TUTOR = $p->getId();
+        if ($tutor->getTutorId() != $p->getTutorId()) {
+            $tpl->ID_TUTOR = $p->getTutorId();
             $tpl->NOME_TUTOR = $p->getNome();
         }
     }

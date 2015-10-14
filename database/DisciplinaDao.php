@@ -104,7 +104,7 @@ class DisciplinaDao {
 
         $sql = "update " . self::$tabela . " set nome=$1, curso=$2 where id_disciplina=$3";
 
-        $params = Array($disciplina->getNome(), $disciplina->getCurso, $disciplina->getId());
+        $params = Array($disciplina->getNome(), $disciplina->getCurso()->getId(), $disciplina->getId());
         pg_query_params($dbCon, $sql, $params);
 
         $conexao->closeConexao();

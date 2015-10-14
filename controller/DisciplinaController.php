@@ -45,14 +45,19 @@ class DisciplinaController {
     function update() {
         $disciplina = new Disciplina();
         $disciplina->setNome($_POST['nome']);
-        $tutor = new Tutor();
-        $tutor->setId($_POST['tutor']);
-        $disciplina->setTutor($tutor->getById());
+        
+        
+        //$disciplina->setTutor($tutor->getById());
         $curso = new Curso();
         $curso->setId($_POST['curso']);
         $disciplina->setCurso($curso->getById());
         $disciplina->setId($_POST['id']);
-        $disciplina->create();
+        $disciplina->update();
+        if(isset($_POST['tutor']) && $_POST['tutor']){
+            $tutor = new Tutor();
+            $tutor->setId($_POST['tutor']);
+            $tutor->addTutorDisciplina($tutor->getId(), $disciplina->getId());
+        }
         header("location: ../view/index.php");
     }
 

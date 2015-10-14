@@ -14,15 +14,15 @@ $tpl = new Template("../view/disciplinas.html");
 $disciplinaController = new DisciplinaController();
 $disciplinas = $disciplinaController->read();
 
-foreach ($disciplinas as $t) {
-    $tpl->ID_DISCIPLINA = $t->getId();
-    $tpl->DISCIPLINA_NOME = $t->getNome();
+foreach ($disciplinas as $d) {
+    $tpl->ID_DISCIPLINA = $d->getId();
+    $tpl->DISCIPLINA_NOME = $d->getNome();
     $tpl->DISCIPLINA_TUTOR = "";
-    foreach ($t->getTutores() as $tutor) {
+    foreach ($d->getTutores() as $tutor) {
         $tpl->DISCIPLINA_TUTOR .= $tutor->getNome() . ", ";
     }
     
-    $tpl->DISCIPLINA_CURSO = $t->getCurso()->getNome();
+    $tpl->DISCIPLINA_CURSO = $d->getCurso()->getNome();
 
     $tpl->block("BLOCK_DISCIPLINA");
 }
