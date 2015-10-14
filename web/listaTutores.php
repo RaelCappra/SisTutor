@@ -20,8 +20,8 @@ foreach ($tutors as $t) {
     $tpl->TUTOR_SOBRENOME = $t->getSobrenome();
     $tpl->TUTOR_CPF = $t->getCpf();
     $tpl->TUTOR_EMAIL = $t->getEmail();
-    $tpl->TUTOR_FORMACAO = $t->getFormacao()['descricao'];
-    $tpl->TUTOR_TITULACAO = $t->getTitulacao()['descricao'];
+    $tpl->TUTOR_FORMACAO = $t->getFormacoes()['descricao'];
+    $tpl->TUTOR_TITULACAO = $t->getTitulacoes()['descricao'];
 
     $tpl->block("BLOCK_TUTOR");
 }

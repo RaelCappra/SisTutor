@@ -20,14 +20,14 @@ $tpl->CPF_TUTOR = $tutor->getCpf();
 $tpl->ID_TUTOR = $tutor->getTutorId();
 $tpl->ID_PESSOA = $tutor->getId();
 
-$titulacao = $tutorController->getTitulacao();
-$formacao = $tutorController->getFormacao();
+$titulacao = $tutorController->getTitulacoes();
+$formacao = $tutorController->getFormacoes();
 
 foreach ($titulacao as $t) {
     $tpl->ID_TITULACAO = $t['id_titulacao'];
     $tpl->NOME_TITULACAO = $t['descricao'];
 
-    if ($t['id_titulacao'] == $tutor->getTitulacao()['id']) {
+    if ($t['id_titulacao'] == $tutor->getTitulacoes()['id']) {
         $tpl->SELECTED = "selected";
     } else {
         $tpl->clear("SELECTED");
@@ -40,7 +40,7 @@ foreach ($formacao as $p) {
     $tpl->ID_FORMACAO = $p['id_formacao'];
     $tpl->NOME_FORMACAO = $p['descricao'];
 
-    if ($p['id_formacao'] == $tutor->getFormacao()['id']) {
+    if ($p['id_formacao'] == $tutor->getFormacoes()['id']) {
         $tpl->SELECTED = "selected";
     } else {
         $tpl->clear("SELECTED");

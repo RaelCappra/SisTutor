@@ -117,7 +117,7 @@ class TutorDao {
         }
 
         $sqlTutor = "insert into sistutor.tutor (pessoa, formacao, titulacao) values($1,$2,$3)";
-        $paramsTutor = array($id, $tutor->getFormacao(), $tutor->getTitulacao());
+        $paramsTutor = array($id, $tutor->getFormacoes(), $tutor->getTitulacoes());
         pg_query_params($dbCon, $sqlTutor, $paramsTutor);
 
         $conexao->closeConexao();
@@ -149,8 +149,8 @@ class TutorDao {
 
         $sql = "update " . self::$tabela . " set pessoa=$1, formacao=$2, titulacao=$3 where id_tutor=$4";
 
-        $params = Array($tutor->getId(), $tutor->getFormacao()['id'],
-            $tutor->getTitulacao()['id'], $tutor->getTutorId());
+        $params = Array($tutor->getId(), $tutor->getFormacoes()['id'],
+            $tutor->getTitulacoes()['id'], $tutor->getTutorId());
         
         pg_query_params($dbCon, $sql, $params);
 
@@ -172,7 +172,7 @@ class TutorDao {
         $conexao->closeConexao();
     }
     
-    function getTitulacao(){
+    function getTitulacoes(){
         $conexao = new Conexao();
 		
         $dbCon = $conexao->getConexao();
@@ -190,7 +190,7 @@ class TutorDao {
         return $tarefas;
     }
     
-    function getFormacao(){
+    function getFormacoes(){
         $conexao = new Conexao();
 		
         $dbCon = $conexao->getConexao();

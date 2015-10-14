@@ -50,13 +50,13 @@ class TutorController {
         header("location: ../view/index.php");
     }
     
-    function getTitulacao() {
+    function getTitulacoes() {
         $tutor = new Tutor();
-        return $tutor->getTitulacao();
+        return $tutor->getTitulacoes();
     }
     
-    function getFormacao() {
+    function getFormacoes() {
         $tutor = new Tutor();
-        return $tutor->getFormacao();
+        return $tutor->getFormacoes();
     }
 }

@@ -69,12 +69,12 @@ class Tutor extends Pessoa {
     
     function getTitulacoes() {
         $tutorDao = new TutorDao();
-        return $tutorDao->getTitulacao();
+        return $tutorDao->getTitulacoes();
     }
     
     function getFormacoes() {
         $tutorDao = new TutorDao();
-        return $tutorDao->getFormacao();
+        return $tutorDao->getFormacoes();
     }
-
+    
 }
