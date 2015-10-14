@@ -92,7 +92,7 @@ class TutorDao {
 
         $tutores = Array();
         while ($linha = pg_fetch_assoc($result)) {
-            $tutor = makeTutor($linha);
+            $tutor = self::makeTutor($linha);
             array_push($tutores, $tutor);
         }
 
