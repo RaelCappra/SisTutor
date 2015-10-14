@@ -43,6 +43,7 @@ class DisciplinaController {
     }
 
     function update() {
+        
         $disciplina = new Disciplina();
         $disciplina->setNome($_POST['nome']);
         
