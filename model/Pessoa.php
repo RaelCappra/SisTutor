@@ -12,9 +12,17 @@
  * @author aluno
  */
 class Pessoa {
-    private $id, $cpf, $nome, $email;
+    private $id, $cpf, $nome, $email, $sobrenome;
     
-    function getId() {
+    function getSobrenome() {
+        return $this->sobrenome;
+    }
+
+    function setSobrenome($sobrenome) {
+        $this->sobrenome = $sobrenome;
+    }
+
+        function getId() {
         return $this->id;
     }
 
