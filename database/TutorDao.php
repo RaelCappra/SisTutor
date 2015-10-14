@@ -87,18 +87,19 @@ class TutorDao {
                 " join $formacao on $formacao.id_formacao = $tabela.formacao" .
                 " join $titulacao on $titulacao.id_titulacao = $tabela.titulacao" .
                 " where id_tutor = $id";
+        
 
         $result = pg_query($dbCon, $sql);
 
-        $tutores = Array();
-        while ($linha = pg_fetch_assoc($result)) {
+        $tutor;
+        if($linha = pg_fetch_assoc($result)) {
             $tutor = self::makeTutor($linha);
-            array_push($tutores, $tutor);
+           
         }
 
         $conexao->closeConexao();
 
-        return $tutores;
+        return $tutor;
     }
 
     

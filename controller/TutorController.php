@@ -16,7 +16,7 @@ class TutorController {
 
     function getById($id) {
         $tutor = new Tutor();
-        $tutor->setId($id);
+        $tutor->setTutorId($id);
         return $tutor->getById();
     }
 

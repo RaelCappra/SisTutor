@@ -9,7 +9,7 @@ require_once("../lib/raelgc/view/Template.php");
 
 use raelgc\view\Template;
 
-$tpl = new Template("../view/addTutor.html");
+$tpl = new Template("../view/editaTutor.html");
 
 $tutorController = new TutorController();
 $tutor = $tutorController->getById($_GET['id']);

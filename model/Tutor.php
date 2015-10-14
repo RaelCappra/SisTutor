@@ -43,7 +43,7 @@ class Tutor extends Pessoa {
 
     function delete() {
         $tutorDao = new TutorDao();
-        $tutorDao->delete($this->id);
+        $tutorDao->delete($this->tutorId);
     }
 
     function read() {
@@ -53,7 +53,7 @@ class Tutor extends Pessoa {
 
     function getById() {
         $tutorDao = new TutorDao();
-        return $tutorDao->getById($this->id);
+        return $tutorDao->getById($this->tutorId);
     }
 
     function create() {
