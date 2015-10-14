@@ -16,10 +16,10 @@ and open the template in the editor.
     <body>
         <div class="container">
             <form action="../controller/FrontController.php" method="post">
-                Nome:<input type="text"  name="nome" value="{NOME_TUTOR}"><br>
-                Sobrenome:<input type="text"  name="sobrenome" value="{SOBRENOME_TUTOR}"><br>
-                Email:<input type="text"  name="email" value="{EMAIL_TUTOR}"><br>
-                CPF:<input type="text"  name="cpf" value="{CPF_TUTOR}"><br>
+                Nome:<input class="form-control" type="text"  name="nome" value="{NOME_TUTOR}"><br>
+                Sobrenome:<input class="form-control" type="text"  name="sobrenome" value="{SOBRENOME_TUTOR}"><br>
+                Email:<input class="form-control" type="text"  name="email" value="{EMAIL_TUTOR}"><br>
+                CPF:<input class="form-control" type="text"  name="cpf" value="{CPF_TUTOR}"><br>
                 Formacao:<select name="formacao">
                         <!-- BEGIN BLOCK_FORMACAO -->
                         <option value="{ID_FORMACAO}" {SELECTED}>{NOME_FORMACAO}</option>

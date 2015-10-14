@@ -17,7 +17,7 @@ and open the template in the editor.
         <div class="container">
             <form action="../controller/FrontController.php" method="post">
                 Nome:<input type="text"  name="nome" value="{NOME_CURSO}"><br>
-                Tipo:<select name="tipo">
+                Tipo:<select class="form-control" name="tipo">
                         <!-- BEGIN BLOCK_TIPO -->
                         <option value="{ID_TIPO}" {SELECTED}>{NOME_TIPO}</option>
                         <!-- END BLOCK_TIPO -->

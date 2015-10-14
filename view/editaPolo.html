@@ -16,9 +16,9 @@ and open the template in the editor.
     <body>
         <div class="container">
             <form action="../controller/FrontController.php" method="post">
-                Nome:<input type="text"  name="nome" value="{NOME_POLO}"><br>
-                Cidade:<input type="text"  name="cidade" value="{CIDADE_POLO}"><br>
-                Estado:<input type="text"  name="estado" value="{ESTADO_POLO}"><br>
+                Nome:<input class="form-control" type="text"  name="nome" value="{NOME_POLO}"><br>
+                Cidade:<input class="form-control" type="text"  name="cidade" value="{CIDADE_POLO}"><br>
+                Estado:<input class="form-control" type="text"  name="estado" value="{ESTADO_POLO}"><br>
                 <input type="hidden" name="id" value="{ID_POLO}">
                 <input type="hidden" name="controller" value="PoloController">
                 <input type="hidden" name="action" value="update()">
