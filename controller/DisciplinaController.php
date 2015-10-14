@@ -6,7 +6,8 @@ include_once('../model/Tutor.php');
 class DisciplinaController {
     function delete() {
          $disciplina = new Disciplina();
-         $disciplina->delete($_GET['id']);
+         $disciplina->setId($_GET['id']);
+         $disciplina->delete();
      }
      
      function read() {
@@ -14,9 +15,10 @@ class DisciplinaController {
          return $disciplina->read();
      }
      
-     function getById() {
+     function getById($id) {
          $disciplina = new Disciplina();
-         return $disciplina->getById($_GET['id']);
+         $disciplina->setId($id);
+         return $disciplina->getById();
      }
      
      function create() {
