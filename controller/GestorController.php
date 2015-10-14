@@ -29,7 +29,7 @@ class GestorController {
 
             header("location: ../view/main.html");
         } else {
-            header("location: ../view");
+            header("location: ../view/index.php");
         }
     }
 

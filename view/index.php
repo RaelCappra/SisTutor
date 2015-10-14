@@ -1,6 +1,8 @@
 <?php
 include_once '../lib/check_login.php';
-
+if (checkLogin()){
+    header("location: ../view/main.html");
+}
 ?>
 
 <html>
