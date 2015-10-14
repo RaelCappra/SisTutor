@@ -1,6 +1,6 @@
 <?php
 
-include_once("../database/GestorDao.php");
+include_once("../model/Gestor.php");
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -17,14 +17,15 @@ class GestorController {
         $login = $_POST['login'];
         $senha = $_POST['senha'];
         
-        $autenticou = (new GestorDao())->autentica($login, $senha);
+        $gestor = new Gestor();
+        $gestor->setLogin($login);
+        $gestor->setSenha($senha);
         
         
         //TODO: SESSIONS
-        if($autenticou){
+        if($gestor->autentica()){
             header("location: ../view/main.html");
-        }
-        else{
+        }else{
             header("location: ../view");
         }
     }
