@@ -23,7 +23,7 @@ class PoloDao {
             $cidade = $linha['cidade'];
             $nome = $linha['nome'];
             $estado = $linha['estado'];
-            $id = $linha['id'];
+            $id = $linha['id_polo'];
 
             $polo->setCidade($cidade);
             $polo->setId($id);
