@@ -63,7 +63,8 @@ class Tutor extends Pessoa {
 
     function update() {
         $tutorDao = new TutorDao();
-        $tutorDao->update($this);
+        $tutorDao->updatePessoa($this);
+        $tutorDao->updateTutor($this);
     }
     
     function getTitulacoes() {
