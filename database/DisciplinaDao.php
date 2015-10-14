@@ -113,7 +113,7 @@ class DisciplinaDao {
         $tutor_disciplina = "sistutor.tutor_disciplina";
         $dbCon = $conexao->getConexao();
         //criar join com curso
-        $sql = "select disciplina, from $tutor_disciplina where tutor=$1";
+        $sql = "select id_disciplina as disciplina from $tutor_disciplina where id_tutor=$1";
 
         $result = pg_query_params($dbCon, $sql, Array($tutor->getTutorId()));
 

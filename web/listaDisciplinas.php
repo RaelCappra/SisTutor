@@ -17,7 +17,11 @@ $disciplinas = $disciplinaController->read();
 foreach ($disciplinas as $t) {
     $tpl->ID_DISCIPLINA = $t->getId();
     $tpl->DISCIPLINA_NOME = $t->getNome();
-    $tpl->DISCIPLINA_TUTOR = $t->getTutor()->getNome();
+    $tpl->DISCIPLINA_TUTOR = "";
+    foreach ($t->getTutores() as $tutor) {
+        $tpl->DISCIPLINA_TUTOR .= $tutor->getNome() . ", ";
+    }
+    
     $tpl->DISCIPLINA_CURSO = $t->getCurso()->getNome();
 
     $tpl->block("BLOCK_DISCIPLINA");

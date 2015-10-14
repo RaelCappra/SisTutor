@@ -7,20 +7,18 @@
  */
 
 include_once '../database/DisciplinaDao.php';
+include_once '../database/TutorDao.php';
+
 class Disciplina {
+
     private $id, $nome;
     private $curso;
-    private $tutor;
-    
-    function getTutor() {
-        return $this->tutor;
+
+    function getTutores() {
+        $tutorDao = new TutorDao();
+        return $tutorDao->listByDisciplina($this);
     }
 
-    function setTutor($tutor) {
-        $this->tutor = $tutor;
-    }
-
-        
     function getCurso() {
         return $this->curso;
     }
@@ -29,7 +27,6 @@ class Disciplina {
         $this->curso = $curso;
     }
 
-        
     function getId() {
         return $this->id;
     }
@@ -47,28 +44,28 @@ class Disciplina {
     }
 
     function delete() {
-         $disciplinaDao = new DisciplinaDao();
-         $disciplinaDao->delete($this->id);
-     }
-     
-     function read() {
-         $disciplinaDao = new DisciplinaDao();
-         return $disciplinaDao->read();
-     }
-     
-     function getById() {
-         $disciplinaDao = new DisciplinaDao();
-         return $disciplinaDao->getById($this->id);
-     }
-     
-     function create() {
-         $disciplinaDao = new DisciplinaDao();
-         $disciplinaDao->create($this);
-     }
-     
-     function update() {
-         $disciplinaDao = new DisciplinaDao();
-         $disciplinaDao->update($this);
-     }
+        $disciplinaDao = new DisciplinaDao();
+        $disciplinaDao->delete($this->id);
+    }
+
+    function read() {
+        $disciplinaDao = new DisciplinaDao();
+        return $disciplinaDao->read();
+    }
+
+    function getById() {
+        $disciplinaDao = new DisciplinaDao();
+        return $disciplinaDao->getById($this->id);
+    }
+
+    function create() {
+        $disciplinaDao = new DisciplinaDao();
+        $disciplinaDao->create($this);
+    }
+
+    function update() {
+        $disciplinaDao = new DisciplinaDao();
+        $disciplinaDao->update($this);
+    }
 
 }
