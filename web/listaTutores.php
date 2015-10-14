@@ -4,7 +4,7 @@
     require_once("../lib/raelgc/view/Template.php");
     use raelgc\view\Template;
 
-    $tpl = new Template("../view/tutors.html");
+    $tpl = new Template("../view/tutores.html");
     
     $tutorController = new TutorController();
     $tutors = $tutorController->read();
