@@ -109,7 +109,7 @@ class DisciplinaDao {
 
     function listByTutor($tutor) {
         $conexao = new Conexao();
-        
+
         $tutor_disciplina = "sistutor.tutor_disciplina";
         $dbCon = $conexao->getConexao();
         //criar join com curso
@@ -127,6 +127,26 @@ class DisciplinaDao {
         $conexao->closeConexao();
 
         return $disciplinas;
+    }
+
+    function listDisciplinasTutoresByCurso($curso) {
+        $tDisciplina = self::$tabela;
+        $tTutor = "sistutor.tutor";
+        $tPessoa = "sistutor.pessoa";
+        $tutorDisisciplina = "sistutor.tutor_disciplina";
+        
+        $sql = "select $tDisciplina.nome as d_nome, $tPessoa.nome as p_nome, $tPessoa.sobrenome from $tutorDisisciplina" . 
+                " join $tTutor on $tutorDisisciplina.id_tutor = $tTutor.id_tutor" .
+                " join $tPessoa on $tPessoa.id_pessoa = $tTutor.pessoa" .
+                " join $tDisciplina on $tDisciplina.id_disciplina = $tutorDisisciplina.id_disciplina" .
+                " where $tDisciplina.curso = $1" .
+                " order by disciplina";
+        
+        $conexao = new Conexao();
+        $dbCon = $conexao->getConexao();
+        $result = pg_query_params($dbCon, $sql, array($curso->getId()));
+        
+        return pg_fetch_all($result);
     }
 
 }
