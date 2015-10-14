@@ -26,7 +26,7 @@ class CursoDao {
             $nome = $linha['nome'];
             $tipo = $tipo = Array("descricao"=>$linha['descricao'], "id"=>$linha["id_tipo_curso"]);
             $idPolo = $linha['polo'];
-            $id = $linha['id'];
+            $id = $linha['id_curso'];
             
             $polo = (new PoloDao())->getById($idPolo);
             
