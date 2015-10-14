@@ -1,3 +1,9 @@
+<?php
+include_once '../lib/check_login.php';
+if (!checkLogin()){
+    header("location: index.php");
+}
+?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -6,7 +12,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Gestao Sistutor</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../lib/css/bootstrap.min.css">
@@ -15,13 +21,16 @@ and open the template in the editor.
     </head>
     <body>
         <div class="container">
-            <form action="../controller/FrontController.php" method="post">
-                Login:<input type="text"  name="login"><br>
-                Senha:<input type="password" name="senha"><br>
-                <input type="hidden" name="controller" value="GestorController">
-                <input type="hidden" name="action" value="login()">
-                <input type="submit" value="Logar">
-            </form>
+            <a href="../web/listaPolos.php">Polos de ensino</a><br>
+            <a href="../web/listaCursos.php">Cursos</a><br>
+            <a href="../web/listaDisciplinas.php">Disciplinas</a><br>
+            <a href="../web/listaTutores.php">Tutores</a><br>
+            
+            <hr>
+            <a href="../web/relatorioCursoPorPolo.php">Relatorio - Curso por polo</a><br>
+            <a href="../web/logout.php">Logout</a><br>
         </div>
     </body>
 </html>
+
+
