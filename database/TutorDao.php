@@ -7,7 +7,7 @@ include_once('../model/Pessoa.php');
 class TutorDao {
 
     private static $tabela = "sistutor.tutor";
-    
+
     private static function makeTutor($linha) {
         $nome = $linha['nome'];
         $pessoaId = $linha['id_pessoa'];
@@ -55,10 +55,10 @@ class TutorDao {
                 " from $tabela join $pessoa on $pessoa.id_pessoa = $tabela.pessoa" .
                 " join $formacao on $formacao.id_formacao = $tabela.formacao" .
                 " join $titulacao on $titulacao.id_titulacao = $tabela.titulacao";
-        
-        /*echo $sql;
-        die();
-        */
+
+        /* echo $sql;
+          die();
+         */
         $result = pg_query($dbCon, $sql);
 
         $tutores = Array();
@@ -71,7 +71,7 @@ class TutorDao {
 
         return $tutores;
     }
-    
+
     function getById($id) {
         $tabela = self::$tabela;
         $pessoa = "sistutor.pessoa";
@@ -87,22 +87,19 @@ class TutorDao {
                 " join $formacao on $formacao.id_formacao = $tabela.formacao" .
                 " join $titulacao on $titulacao.id_titulacao = $tabela.titulacao" .
                 " where id_tutor = $id";
-        
+
 
         $result = pg_query($dbCon, $sql);
 
         $tutor;
-        if($linha = pg_fetch_assoc($result)) {
+        if ($linha = pg_fetch_assoc($result)) {
             $tutor = self::makeTutor($linha);
-           
         }
 
         $conexao->closeConexao();
 
         return $tutor;
     }
-
-    
 
     function create($tutor) {
         $conexao = new Conexao();
@@ -152,12 +149,12 @@ class TutorDao {
 
         $params = Array($tutor->getId(), $tutor->getFormacoes()['id'],
             $tutor->getTitulacoes()['id'], $tutor->getTutorId());
-        
+
         pg_query_params($dbCon, $sql, $params);
 
         $conexao->closeConexao();
     }
-    
+
     function updatePessoa($pessoa) {
         $tabela = "sistutor.pessoa";
         $conexao = new Conexao();
@@ -172,41 +169,41 @@ class TutorDao {
 
         $conexao->closeConexao();
     }
-    
-    function getTitulacoes(){
+
+    function getTitulacoes() {
         $conexao = new Conexao();
-		
+
         $dbCon = $conexao->getConexao();
         $sql = "select *, id_titulacao as id from sistutor.titulacao";
 
         $result = pg_query($dbCon, $sql);
 
-        $tarefas = Array();		
+        $tarefas = Array();
         while ($linha = pg_fetch_assoc($result)) {
-                array_push($tarefas, $linha);
+            array_push($tarefas, $linha);
         }
 
         $conexao->closeConexao();
 
         return $tarefas;
     }
-    
-    function getFormacoes(){
+
+    function getFormacoes() {
         $conexao = new Conexao();
-		
+
         $dbCon = $conexao->getConexao();
         $sql = "select *, id_formacao as id from sistutor.formacao";
 
         $result = pg_query($dbCon, $sql);
 
-        $tarefas = Array();		
+        $formacoes = Array();
         while ($linha = pg_fetch_assoc($result)) {
-                array_push($tarefas, $linha);
+            array_push($formacoes, $linha);
         }
 
         $conexao->closeConexao();
 
-        return $tarefas;
+        return $formacoes;
     }
 
 }
