@@ -85,8 +85,8 @@ class CursoDao {
         $conexao = new Conexao();
 
         $dbCon = $conexao->getConexao();
-        $sql = "insert into (nome, cidade, uf) values($1, $2, $3)";
-        $params = array($polo->getNome(), $polo->getCidade(), $polo->getEstado());
+        $sql = "insert into curso (nome, tipo, polo) values($1, $2, $3)";
+        $params = array($curso->getNome(), $curso->getTipo['id'], $curso->getPolo()->getId());
         pg_query_params($dbCon, $sql, $params);
 
         $conexao->closeConexao();
@@ -109,9 +109,9 @@ class CursoDao {
 
         $dbCon = $conexao->getConexao();
 
-        $sql = "update " . self::$tabela . " set nome=$1, tipo=$2, uf=$3 where id_polo=$4";
+        $sql = "update " . self::$tabela . " set nome=$1, tipo=$2, polo=$3 where id_curso=$4";
         
-        $params = Array($polo->getNome(), $polo->getCidade(), $polo->getEstado(), $polo->getId(),);
+        $params = Array($curso->getNome(), $curso->getTipo()['id'], $curso->getPolo()->getId(), $curso->getId());
         pg_query_params($dbCon, $sql, $params);
 
         $conexao->closeConexao();
