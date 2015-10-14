@@ -12,6 +12,7 @@
     foreach($tutors as $t){
         $tpl->ID_TUTOR = $t->getId();
         $tpl->TUTOR_NOME = $t->getNome();
+        $tpl->TUTOR_SOBRENOME = $t->getSobrenome();
         $tpl->TUTOR_CPF = $t->getCpf();
         $tpl->TUTOR_EMAIL = $t->getEmail();
         $tpl->TUTOR_FORMACAO = $t->getFormacao()['descricao'];

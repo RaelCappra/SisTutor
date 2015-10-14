@@ -9,8 +9,9 @@
     $tutorController = new TutorController();
     $tutor = $tutorController->getById($_GET['id']);
     $tpl->NOME_TUTOR = $tutor->getNome();
-    $tpl->NOME_EMAIL = $tutor->getEmail();
-    $tpl->NOME_CPF = $tutor->getCpf();
+    $tpl->SOBRENOME_TUTOR = $tutor->getSobrenome();
+    $tpl->EMAIL_TUTOR = $tutor->getEmail();
+    $tpl->CPF_TUTOR = $tutor->getCpf();
     
     $titulacao = $tutorController->getTitulacao();
     $formacao = $tutorController->getFormacao();
