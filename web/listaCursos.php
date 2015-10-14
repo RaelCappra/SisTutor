@@ -11,7 +11,7 @@
     foreach($cursos as $t){
         $tpl->ID_CURSO = $t->getId();
         $tpl->CURSO_NOME = $t->getNome();
-        $tpl->CURSO_TIPO = $t->getTipo();
+        $tpl->CURSO_TIPO = $t->getTipo()['descricao'];
         $tpl->CURSO_POLO = $t->getPolo()->getNome();
         
         $tpl->block("BLOCK_CURSO");

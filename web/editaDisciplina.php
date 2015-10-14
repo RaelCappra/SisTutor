@@ -22,7 +22,7 @@
     foreach($cursos as $t){
         $tpl->ID_CURSO = $t->getId();
         $tpl->NOME_CURSO = $t->getNome();
-        if($t->getId() == $disciplina->getCurso()){ 
+        if($t->getId() == $disciplina->getCurso()->getId()){ 
            $tpl->SELECTED = "selected";       
         } else {
             $tpl->clear("SELECTED");
@@ -35,7 +35,7 @@
         $tpl->ID_TUTOR = $p->getId();
         $tpl->NOME_TUTOR = $p->getNome();
         
-        if($p->getId() == $disciplina->getTutor()){ 
+        if($p->getId() == $disciplina->getTutor()->getId()){ 
            $tpl->SELECTED = "selected";       
         } else {
             $tpl->clear("SELECTED");
