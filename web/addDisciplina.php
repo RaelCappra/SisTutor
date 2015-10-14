@@ -25,7 +25,7 @@ foreach ($cursos as $t) {
 }
 
 foreach ($tutors as $p) {
-    $tpl->ID_TUTOR = $p->getId();
+    $tpl->ID_TUTOR = $p->getTutorId();
     $tpl->NOME_TUTOR = $p->getNome();
     $tpl->block("BLOCK_TUTOR");
 }

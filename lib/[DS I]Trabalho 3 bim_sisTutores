@@ -1,0 +1,123 @@
+--drop schema sistutor cascade;
+
+begin transaction;
+
+create schema sisTutor;
+
+create table sisTutor.pessoa (
+id_pessoa serial primary key,
+cpf varchar (11),
+nome varchar (75),
+sobrenome varchar (75),
+email varchar (45)
+);
+
+insert into sisTutor.pessoa(cpf,nome,sobrenome,email) 
+values('01201201201', 'Guilherme', 'Pereira', 
+	'guilherme.pereira@riogrande.ifrs.br');
+
+insert into sisTutor.pessoa(cpf,nome,sobrenome,email) 
+values('01201201609', 'Marcio', 'Torres', 
+	'marcio.torres@riogrande.ifrs.br');
+
+create table sisTutor.login (
+id_login serial primary key,
+login varchar (45),
+senha varchar (10)
+);
+
+insert into sistutor.login(login,senha)
+values('guilherme','1234');
+
+create table sisTutor.formacao (
+id_formacao serial primary key,
+descricao varchar (75)
+);
+
+insert into sistutor.formacao(descricao)
+values('Ciencias da Computação');
+
+create table sisTutor.titulacao (
+id_titulacao serial primary key,
+descricao varchar (75)
+);
+
+insert into sistutor.titulacao(descricao)
+values('Graduação');
+insert into sistutor.titulacao(descricao)
+values('Especialização');
+insert into sistutor.titulacao(descricao)
+values('Mestrado');
+insert into sistutor.titulacao(descricao)
+values('Doutorado');
+
+create table sisTutor.tutor (
+id_tutor serial primary key,
+pessoa integer references sisTutor.pessoa on delete cascade,
+formacao integer,
+titulacao integer
+);
+
+insert into sisTutor.tutor(pessoa, formacao, titulacao) values (1,1,1);
+
+create table sisTutor.polo (
+id_polo serial primary key,
+nome varchar (45),
+cidade varchar (45),
+uf char (2)
+);
+
+insert into sistutor.polo(nome,cidade,uf)
+values('Polo Rio Grande', 'Rio Grande', 'RS');
+
+create table sisTutor.tipo_curso (
+id_tipo_curso serial primary key,
+descricao varchar (75)
+);
+
+insert into sistutor.tipo_curso(descricao)
+values('Distância');
+insert into sistutor.tipo_curso(descricao)
+values('Semi-Presencial');
+insert into sistutor.tipo_curso(descricao)
+values('Presencial');
+
+create table sisTutor.curso (
+id_curso serial primary key,
+nome varchar (75),
+tipo integer references sisTutor.tipo_curso on delete cascade,
+polo integer references sisTutor.polo on delete cascade
+);
+
+insert into sistutor.curso(nome, tipo, polo)
+values('Informática pra Internet', 1, 1);
+
+create table sisTutor.disciplina (
+id_disciplina serial primary key,
+nome varchar (75),
+curso integer references sistutor.curso on delete cascade
+);
+
+insert into sisTutor.disciplina (nome, curso) values ('Desenvolvimento Web I', 1);
+
+create table sisTutor.tutor_disciplina (
+id_tutor integer references sistutor.tutor on delete cascade,
+id_disciplina integer references sistutor.disciplina on delete cascade,
+dt_inicio date,
+dt_fim date,
+
+constraint pk2 primary key(id_tutor, id_disciplina)
+);
+
+insert into sisTutor.tutor_disciplina (id_tutor, id_disciplina, dt_inicio, dt_fim) values (1,1,'2009-06-10','2011-06-10');
+  
+create table sisTutor.gestor(
+id_gestor serial primary key,
+pessoa integer,
+login integer references sisTutor.login on delete cascade
+);
+
+insert into sisTutor.login(login,senha) values('marcio', '123456');
+insert into sisTutor.gestor(pessoa, login) values(2,2);
+
+commit
