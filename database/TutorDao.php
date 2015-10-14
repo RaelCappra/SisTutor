@@ -29,28 +29,28 @@ class TutorDao {
 		$conexao = new Conexao();
 		
 		$dbCon = $conexao->getConexao();
-		//pessoas -> tutor
-		$sql = "insert into pessoas values()";
-		$params = array($tutor->getCpf(), $tutor->getNome(), );
-		$result = pg_query_params($dbCon, $sql, $params);
-		
-		$tarefas = Array();		
-		while ($linha = pg_fetch_assoc($result)) {
-			array_push($tarefas, $linha);
-		}
-		
+		$sqlPessoa = "insert into sistutor.pessoa(cpf, nome, sobrenome, email) values($1,$2,$3,$4) returning id_pessoa;";
+		$paramsPessoa = array($tutor->getCpf(), $tutor->getNome(), $tutor->getSobrenome(), $tutor->getEmail());
+		$result = pg_query_params($dbCon, $sqlPessoa, $paramsPessoa);
+                $id;
+		foreach ($result as $r){
+                    $id = $r['id_pessoa'];
+                }
+                
+		$sqlTutor = "insert into sistutor.tutor (pessoa, formacao, titulacao) values($1,$2,$3)";
+                $paramsTutor = array($id, $tutor->getFormacao(), $tutor->getTitulacao());
+                pg_query_params($dbCon, $sqlTutor, $paramsTutor);
+                
 		$conexao->closeConexao();
-		
-		return $tarefas;
-               
+
     }
     
-    function delete($codigo) {
+    function delete($id) {
 		$conexao = new Conexao();
 		
 		$dbCon = $conexao->getConexao();
 		
-		$sql = "select * from ".self::$tabelaCurso. " where lixeira=false";
+		$sql = "select * from ".self::$tabelaCurso. " where id_tutor=".$id;
 		
 		$result = pg_query($dbCon, $sql);
 		

@@ -17,6 +17,11 @@ and open the template in the editor.
                 <option value="{ID_CURSO}" {SELECTED}>{NOME_CURSO}</option>
                 <!-- END BLOCK_CURSO -->
              </select>
+        Tutor:<select name="tutor">
+                <!-- BEGIN BLOCK_TUTOR -->
+                <option value="{ID_TUTOR}" {SELECTED}>{NOME_TUTOR}</option>
+                <!-- END BLOCK_TUTOR -->
+             </select>
         <input type="hidden" name="controller" value="DisciplinaController">
         <input type="hidden" name="action" value="editar()">
         <input type="submit" value="Add">

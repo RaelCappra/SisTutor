@@ -107,4 +107,22 @@ class CursoDao {
 
         $conexao->closeConexao();
     }
+    
+    function getTipos(){
+        $conexao = new Conexao();
+		
+        $dbCon = $conexao->getConexao();
+        $sql = "select * from sistutor.tipo_curso";
+
+        $result = pg_query($dbCon, $sql);
+
+        $tarefas = Array();		
+        while ($linha = pg_fetch_assoc($result)) {
+                array_push($tarefas, $linha);
+        }
+
+        $conexao->closeConexao();
+
+        return $tarefas;
+    }
 }

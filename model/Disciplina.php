@@ -10,7 +10,17 @@ include_once '../database/DisciplinaDao.php';
 class Disciplina {
     private $id, $nome;
     private $curso;
+    private $tutor;
     
+    function getTutor() {
+        return $this->tutor;
+    }
+
+    function setTutor($tutor) {
+        $this->tutor = $tutor;
+    }
+
+        
     function getCurso() {
         return $this->curso;
     }
