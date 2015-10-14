@@ -5,7 +5,8 @@ include_once('../model/Polo.php');
 class CursoController {
     function delete() {
          $curso = new Curso();
-         $curso->delete($_GET['id']);
+         $curso->setId($_GET['id']);
+         $curso->delete();
      }
      
      function read() {
@@ -13,9 +14,10 @@ class CursoController {
          return $curso->read();
      }
      
-     function getById() {
+     function getById($id) {
          $curso = new Curso();
-         return $curso->getById($_GET['id']);
+         $curso->setId($id);
+         return $curso->getById();
      }
      
      function create() {

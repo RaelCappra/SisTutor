@@ -6,11 +6,40 @@
  * and open the template in the editor.
  */
 
-/**
- * Description of PoloController
- *
- * @author aluno
- */
+include_once('../model/Polo.php');
 class PoloController {
-    //put your code here
+    
+    function delete() {
+         $polo = new Polo();
+         $polo->setId($_GET['id']);
+         $polo->delete();
+     }
+     
+     function read() {
+         $polo = new Polo();
+         return $polo->read();
+     }
+     
+     function getById($id) {
+         $polo = new Polo();
+         $polo->setId($id);
+         return $polo->getById();
+     }
+     
+     function create() {
+         $polo = new Polo();
+         $polo->setCidade($_POST['cidade']);
+         $polo->setEstado($_POST['estado']);
+         $polo->setNome($_POST['nome']);
+         $polo->create();
+     }
+     
+     function update() {
+         $polo = new Polo();
+         $polo->setCidade($_POST['cidade']);
+         $polo->setEstado($_POST['estado']);
+         $polo->setNome($_POST['nome']);
+         $polo->setId($_POST['id']);
+         $polo->update();
+     }
 }
