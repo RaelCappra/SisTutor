@@ -18,11 +18,12 @@ and open the template in the editor.
                     <!-- BEGIN BLOCK_DISCIPLINA -->
                     <tr>
                         <td>{DISCIPLINA_NOME}</td>
-                        <td><button name="action" value="editar({ID_DISCIPLINA})">Editar</button></td>
+                        <td>{DISCIPLINA_TUTOR}</td>
+                        <td>{DISCIPLINA_CURSO}</td>
+                        <td><a href="../web/editaDisciplina.php?id={ID_DISCIPLINA}">Editar</a></td>
                         <td><button name="action" value="deletar({ID_DISCIPLINA})">Deletar</button></td>
-                        <td><button name="action" value="visualizar({ID_DISCIPLINA})">Visualizar</button></td>
                     </tr>  
-                    <!-- END BLOCK_TAREFA -->
+                    <!-- END BLOCK_DISCIPLINA -->
                 </table>
     
         </form>

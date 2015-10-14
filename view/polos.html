@@ -17,11 +17,13 @@ and open the template in the editor.
                     <!-- BEGIN BLOCK_POLO -->
                     <tr>
                         <td>{POLO_NOME}</td>
-                        <td><button name="action" value="editar({ID_POLO})">Editar</button></td>
+                        <td>{POLO_CIDADE}</td>
+                        <td>{POLO_ESTADO}</td>
+                        <td><a href="../web/editaPolo.php?id={ID_POLO}">Editar</a></td>
                         <td><button name="action" value="deletar({ID_POLO})">Deletar</button></td>
-                        <td><button name="action" value="visualizar({ID_POLO})">Visualizar</button></td>
+
                     </tr>  
-                    <!-- END BLOCK_TAREFA -->
+                    <!-- END BLOCK_POLO -->
                 </table>
     
         </form>
