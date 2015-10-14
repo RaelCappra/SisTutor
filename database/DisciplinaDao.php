@@ -59,7 +59,7 @@ class DisciplinaDao {
             $idCurso = $linha['curso'];
 
             $curso = (new CursoDao())->getById($idCurso);
-
+            $disciplina = new Disciplina();
             $disciplina->setId($id);
             $disciplina->setNome($nome);
             $disciplina->setCurso($curso);

@@ -81,23 +81,25 @@ class TutorDao {
 
         $dbCon = $conexao->getConexao();
 
-        $sql = "select id_tutor, $pessoa.id_pessoa, $pessoa.nome, $pessoa.sobrenome, $pessoa.cpf, $pessoa.email," .
-                " $formacao.id_formacao, $formacao.descricao as d_formacao, $titulacao.id_titulacao, $titulacao.descricao as d_titulacao" .
-                " from $tabela join $pessoa on $pessoa.id_pessoa = $tabela.pessoa" .
-                " join $formacao on $formacao.id_formacao = $tabela.formacao" .
-                " join $titulacao on $titulacao.id_titulacao = $tabela.titulacao" .
+        $sql = "select id_tutor, $pessoa.id_pessoa, $pessoa.nome, $pessoa.sobrenome, $pessoa.cpf, $pessoa.email,\n" .
+                " $formacao.id_formacao, $formacao.descricao as d_formacao, $titulacao.id_titulacao, $titulacao.descricao as d_titulacao\n" .
+                " from $tabela join $pessoa on $pessoa.id_pessoa = $tabela.pessoa\n" .
+                " join $formacao on $formacao.id_formacao = $tabela.formacao\n" .
+                " join $titulacao on $titulacao.id_titulacao = $tabela.titulacao\n" .
                 " where id_tutor = $id";
 
 
         $result = pg_query($dbCon, $sql);
 
-        $tutor;
+        $tutor = new Tutor();
         if ($linha = pg_fetch_assoc($result)) {
             $tutor = self::makeTutor($linha);
+        } else{
+            //print($id);die();
         }
 
         $conexao->closeConexao();
-
+        
         return $tutor;
     }
 
@@ -226,5 +228,18 @@ class TutorDao {
         $conexao->closeConexao();
 
         return $tutores;
+    }
+    
+    function addTutorDisciplina($tutor, $disciplina){
+        $conexao = new Conexao();
+        
+        $tutor_disciplina = "sistutor.tutor_disciplina";
+        $dbCon = $conexao->getConexao();
+        
+        $sql = "insert into $tutor_disciplina (id_tutor, id_disciplina, dt_inicio) values " .
+                " ($1, $2, now())";
+        pg_query_params($dbCon, $sql, Array($tutor->getId(), $disciplina->getId()));
+        
+        $conexao->closeConexao();
     }
 }

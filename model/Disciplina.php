@@ -18,6 +18,11 @@ class Disciplina {
         $tutorDao = new TutorDao();
         return $tutorDao->listByDisciplina($this);
     }
+    
+    function setTutor($tutor){
+        $tutorDao = new TutorDao();
+        $tutorDao->addTutorDisciplina($tutor, $this);
+    }
 
     function getCurso() {
         return $this->curso;
