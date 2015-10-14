@@ -64,7 +64,7 @@ class Curso {
      
      function getTipos() {
          $cursoDao = new CursoDao();
-         $cursoDao->getTipos();
+        return  $cursoDao->getTipos();
      }
 
 

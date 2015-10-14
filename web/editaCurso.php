@@ -11,6 +11,7 @@
     $poloController = new PoloController();
     $curso = $cursoController->getById($_GET['id']);
     $tpl->NOME_CURSO = $curso->getNome();
+    $tpl->ID_CURSO = $curso->getId();
     
     $tipos = $cursoController->getTipos();
     $polos = $poloController->read();

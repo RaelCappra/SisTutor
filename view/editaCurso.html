@@ -22,8 +22,9 @@ and open the template in the editor.
                 <option value="{ID_POLO}" {SELECTED}>{NOME_POLO}</option>
                 <!-- END BLOCK_POLO -->
              </select>
+        <input type="hidden" name="id" value="{ID_CURSO}">
         <input type="hidden" name="controller" value="CursoController">
-        <input type="hidden" name="action" value="editar()">
+        <input type="hidden" name="action" value="update()">
         <input type="submit" value="Add">
     </body>
 </html>

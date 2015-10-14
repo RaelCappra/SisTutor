@@ -1,16 +1,46 @@
 <?php
+include_once '../model/Curso.php';
+include_once('../model/Polo.php');
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of CursoController
- *
- * @author aluno
- */
 class CursoController {
-    //put your code here
+    function delete() {
+         $curso = new Curso();
+         $curso->delete($_GET['id']);
+     }
+     
+     function read() {
+         $curso = new Curso();
+         return $curso->read();
+     }
+     
+     function getById() {
+         $curso = new Curso();
+         return $curso->getById($_GET['id']);
+     }
+     
+     function create() {
+         $curso = new Curso();
+         $curso->setNome($_POST['nome']);
+         $polo = (new Polo())->getById($_POST['polo']);
+         $curso->setPolo($polo);
+         $tipo = array('id' => $_POST['tipo']);
+         $curso->setTipo($tipo);
+         $curso->create();
+     }
+     
+     function update() {
+         $curso = new Curso();
+         $curso->setNome($_POST['nome']);
+         $polo = (new Polo())->getById($_POST['polo']);
+         $curso->setPolo($polo);
+         $tipo = array('id' => $_POST['tipo']);
+         $curso->setTipo($tipo);
+         $curso->setId($_POST['id']);
+         $curso->update();
+     }
+     
+     function getTipos() {
+         $curso = new Curso();
+         return $curso->getTipos();
+     }
 }

@@ -86,7 +86,7 @@ class CursoDao {
 
         $dbCon = $conexao->getConexao();
         $sql = "insert into curso (nome, tipo, polo) values($1, $2, $3)";
-        $params = array($curso->getNome(), $curso->getTipo['id'], $curso->getPolo()->getId());
+        $params = array($curso->getNome(), $curso->getTipo()['id'], $curso->getPolo()->getId());
         pg_query_params($dbCon, $sql, $params);
 
         $conexao->closeConexao();
